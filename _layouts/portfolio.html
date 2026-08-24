@@ -32,8 +32,8 @@
                             <h2 class="appCardName" data-role="name">{{ app.app_name | default: app.title }}</h2>
                             <p class="appCardPrice" data-role="price">{% if app.app_price %}{{ app.app_price }}{% endif %}</p>
                             <p class="appCardDesc">{{ app.app_description }}</p>
-                            <span class="appCardLink">View details →</span>
                         </div>
+                        <span class="appCardLink" aria-hidden="true">View details →</span>
                     </a>
                     {% endfor %}
                 </div>

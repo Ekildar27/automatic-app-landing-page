@@ -709,14 +709,6 @@ nav > ul li a:active {
 		font-size: 2.4rem;
 	}
 
-	.appGrid {
-		row-gap: 64px;
-	}
-
-	.appCard {
-		padding: 68px 16px 24px;
-	}
-
 }
 
 
@@ -1193,92 +1185,6 @@ footer {
 		z-index: 2;
 	}
 
-	.appGrid {
-		row-gap: 0;
-		padding-top: 4px;
-		padding-bottom: 16px;
-	}
-
-	.appCard {
-		flex-direction: row;
-		align-items: center;
-		gap: 14px;
-		padding: 14px 0;
-		border-radius: 0;
-		box-shadow: none;
-		background: transparent;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-		transform: none;
-	}
-
-	.appCard:last-child {
-		border-bottom: none;
-	}
-
-	.appCard:hover {
-		transform: none;
-		box-shadow: none;
-	}
-
-	.appCardVisual {
-		position: static;
-		transform: none;
-		left: auto;
-		flex-shrink: 0;
-	}
-
-	.appCardIconFrame {
-		width: 52px;
-		height: 52px;
-		border-radius: 12px;
-		padding: 0;
-		box-shadow: none;
-	}
-
-	.appCardIcon {
-		border-radius: 12px;
-	}
-
-	.appCardBody {
-		flex: 1;
-		min-width: 0;
-		text-align: left;
-		align-items: flex-start;
-	}
-
-	.appCardName {
-		font-size: 1.7rem;
-		margin-bottom: 2px;
-		padding-right: 0;
-	}
-
-	.appCardPrice {
-		font-size: 1.3rem;
-		margin-bottom: 4px;
-		min-height: 0;
-	}
-
-	.appCardDesc {
-		font-size: 1.35rem;
-		line-height: 1.45;
-		-webkit-line-clamp: 2;
-	}
-
-	.appCardLink {
-		flex-shrink: 0;
-		align-self: center;
-		margin-top: 0;
-		font-size: 0;
-		line-height: 1;
-		color: rgba($accent-color, 0.45);
-
-		&::after {
-			content: "›";
-			font-size: 2.6rem;
-			font-weight: 400;
-		}
-	}
-
 	.portfolioAppsContainer footer .footerText {
 		padding-top: 32px;
 		padding-bottom: 36px;
@@ -1326,73 +1232,262 @@ footer {
 	padding-bottom: 64px;
 }
 
-@media only screen and (max-width: 992px) {
+// Mobile list layout (≤768px) — must win over tablet/desktop card rules
+@media only screen and (max-width: 768px) {
+	.appGrid {
+		grid-template-columns: 1fr;
+		row-gap: 0;
+		column-gap: 0;
+		padding-top: 4px;
+		padding-bottom: 16px;
+	}
+
+	.appCard {
+		position: static;
+		flex-direction: row;
+		align-items: center;
+		gap: 14px;
+		padding: 14px 0;
+		border-radius: 0;
+		box-shadow: none;
+		background: transparent;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+		overflow: visible;
+		transform: none;
+	}
+
+	.appCard:last-child {
+		border-bottom: none;
+	}
+
+	.appCard:hover {
+		transform: none;
+		box-shadow: none;
+	}
+
+	.appCardVisual {
+		position: static;
+		top: auto;
+		left: auto;
+		transform: none;
+		z-index: auto;
+		flex-shrink: 0;
+		width: 52px;
+		height: 52px;
+	}
+
+	.appCardIconFrame {
+		width: 52px;
+		height: 52px;
+		border-radius: 12px;
+		padding: 0;
+		box-shadow: none;
+	}
+
+	.appCardIcon {
+		border-radius: 12px;
+	}
+
+	.appCardBody {
+		position: static;
+		z-index: auto;
+		flex: 1;
+		min-width: 0;
+		text-align: left;
+		align-items: flex-start;
+	}
+
+	.appCardName {
+		color: $feature-title-color;
+		font-size: 1.7rem;
+		font-weight: 700;
+		margin-bottom: 2px;
+		padding-right: 0;
+		line-height: 1.3;
+	}
+
+	.appCardPrice {
+		color: $accent-color;
+		font-size: 1.3rem;
+		font-weight: 600;
+		margin-bottom: 4px;
+		min-height: 0;
+	}
+
+	.appCardDesc {
+		color: $feature-text-color;
+		font-size: 1.35rem;
+		line-height: 1.45;
+		-webkit-line-clamp: 2;
+	}
+
+	.appCardLink {
+		flex-shrink: 0;
+		align-self: center;
+		margin-top: 0;
+		font-size: 0;
+		line-height: 1;
+		color: rgba($accent-color, 0.45);
+
+		&::after {
+			content: "›";
+			font-size: 2.6rem;
+			font-weight: 400;
+		}
+	}
+}
+
+// Tablet + desktop card layout (≥769px)
+@media only screen and (min-width: 769px) {
 	.appGrid {
 		grid-template-columns: 1fr;
 		row-gap: 96px;
 		padding-top: 48px;
 	}
-}
 
-.appCard {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	text-align: left;
-	padding: 88px 32px 36px;
-	background: #ffffff;
-	border-radius: 24px;
-	box-shadow:
-		0 4px 6px rgba(0, 0, 0, 0.04),
-		0 16px 40px rgba(0, 0, 0, 0.14);
-	transition: transform 0.22s ease, box-shadow 0.22s ease;
-	color: inherit;
-	overflow: visible;
-}
+	@media only screen and (min-width: 993px) {
+		.appGrid {
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 112px;
+			column-gap: 36px;
+			padding-top: 52px;
+			padding-bottom: 64px;
+		}
+	}
 
-.appCard:hover {
-	transform: translateY(-6px);
-	box-shadow:
-		0 8px 12px rgba(0, 0, 0, 0.06),
-		0 24px 48px rgba(0, 0, 0, 0.18);
-}
-
-@media (hover: none) {
-	.appCard:hover {
-		transform: none;
+	.appCard {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		text-align: left;
+		padding: 88px 32px 36px;
+		background: #ffffff;
+		border-radius: 24px;
 		box-shadow:
 			0 4px 6px rgba(0, 0, 0, 0.04),
 			0 16px 40px rgba(0, 0, 0, 0.14);
+		transition: transform 0.22s ease, box-shadow 0.22s ease;
+		color: inherit;
+		overflow: visible;
+	}
+
+	.appCard:hover {
+		transform: translateY(-6px);
+		box-shadow:
+			0 8px 12px rgba(0, 0, 0, 0.06),
+			0 24px 48px rgba(0, 0, 0, 0.18);
+	}
+
+	.appCardVisual {
+		position: absolute;
+		top: 0;
+		left: 32px;
+		transform: translateY(-50%);
+		z-index: 2;
+	}
+
+	.appCardIconFrame {
+		width: 88px;
+		height: 88px;
+		border-radius: 20px;
+		padding: 3px;
+		background: #ffffff;
+		box-shadow:
+			0 8px 20px rgba(0, 0, 0, 0.16),
+			0 2px 6px rgba(0, 0, 0, 0.08);
+	}
+
+	.appCardIcon {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 17px;
+		object-fit: cover;
+		background: linear-gradient(135deg, #d8d8d8 0%, #efefef 100%);
+	}
+
+	.appCardBody {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		min-height: 0;
+	}
+
+	.appCardName {
+		color: $feature-title-color;
+		font-size: 2.2rem;
+		font-weight: 700;
+		margin-bottom: 8px;
+		line-height: 1.3;
+		padding-right: 8px;
+	}
+
+	.appCardPrice {
+		color: $accent-color;
+		font-size: 1.6rem;
+		font-weight: 600;
+		margin-bottom: 16px;
+		min-height: 1.6rem;
+	}
+
+	.appCardDesc {
+		color: $feature-text-color;
+		font-size: 1.7rem;
+		line-height: 1.6;
+		flex: 1;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.appCardLink {
+		color: $accent-color;
+		font-size: 1.5rem;
+		margin-top: 22px;
+		font-weight: 600;
+		align-self: flex-start;
+
+		&::after {
+			content: none;
+		}
+	}
+
+	@media only screen and (max-width: 992px) {
+		.appCard {
+			padding: 84px 28px 32px;
+		}
+
+		.appCardVisual {
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.appCardBody {
+			text-align: center;
+			align-items: center;
+		}
+
+		.appCardLink {
+			align-self: center;
+		}
 	}
 }
 
-.appCardVisual {
-	position: absolute;
-	top: 0;
-	left: 32px;
-	transform: translateY(-50%);
-	z-index: 2;
-}
-
-.appCardIconFrame {
-	width: 88px;
-	height: 88px;
-	border-radius: 20px;
-	padding: 3px;
-	background: #ffffff;
-	box-shadow:
-		0 8px 20px rgba(0, 0, 0, 0.16),
-		0 2px 6px rgba(0, 0, 0, 0.08);
+.appCard {
+	display: flex;
+	color: inherit;
+	text-decoration: none;
 }
 
 .appCardIcon {
 	display: block;
 	width: 100%;
 	height: 100%;
-	border-radius: 17px;
 	object-fit: cover;
-	background: linear-gradient(135deg, #d8d8d8 0%, #efefef 100%);
 	opacity: 1;
 	transition: opacity 0.25s ease;
 }
@@ -1406,68 +1501,12 @@ footer {
 	opacity: 1;
 }
 
-.appCardBody {
-	position: relative;
-	z-index: 1;
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	min-height: 0;
-}
-
-.appCardName {
-	color: $feature-title-color;
-	font-size: 2.2rem;
-	font-weight: 700;
-	margin-bottom: 8px;
-	line-height: 1.3;
-	padding-right: 8px;
-}
-
-.appCardPrice {
-	color: $accent-color;
-	font-size: 1.6rem;
-	font-weight: 600;
-	margin-bottom: 16px;
-	min-height: 1.6rem;
-}
-
-.appCardDesc {
-	color: $feature-text-color;
-	font-size: 1.7rem;
-	line-height: 1.6;
-	flex: 1;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-}
-
-.appCardLink {
-	color: $accent-color;
-	font-size: 1.5rem;
-	margin-top: 22px;
-	font-weight: 600;
-	align-self: flex-start;
-}
-
-@media only screen and (max-width: 992px) {
-	.appCard {
-		padding: 84px 28px 32px;
-	}
-
-	.appCardVisual {
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	.appCardBody {
-		text-align: center;
-		align-items: center;
-	}
-
-	.appCardLink {
-		align-self: center;
+@media (hover: none) and (min-width: 769px) {
+	.appCard:hover {
+		transform: none;
+		box-shadow:
+			0 4px 6px rgba(0, 0, 0, 0.04),
+			0 16px 40px rgba(0, 0, 0, 0.14);
 	}
 }
 
