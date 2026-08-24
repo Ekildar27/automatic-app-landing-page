@@ -58,7 +58,10 @@
 
 @media only screen and (max-width: 992px) {
 	.appHeroContainer {
-		grid-template-rows: 115px auto auto;
+		grid-column-gap: 0;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+		row-gap: 12px;
 		grid-template-areas:
 			"h h h h h h h h h h h h"
 			"p p p p p p p p p p p p"
@@ -107,7 +110,7 @@
 
 @media only screen and (max-width: 768px) {
 
-	.container {
+	.container:not(.portfolioContainer):not(.appBodyContainer) {
 		grid-template-rows: auto auto auto auto;
 		padding-left: 20px;
 		padding-right: 20px;
@@ -117,20 +120,35 @@
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+
+	.portfolioContainer {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 
 @media only screen and (max-width: 992px) {
 
-	.container {
-		grid-column-gap: 0px;
+	// Only reorder app detail hero — never override portfolio grid areas (t/g)
+	.appHeroContainer {
+		grid-column-gap: 0;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto auto auto auto auto;
-		grid-template-areas: 
+	}
+
+	.portfolioContainer {
+		grid-column-gap: 0;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto auto;
+		grid-template-areas:
 			"h h h h h h h h h h h h"
-			"i i i i i i i i i i i i"
-			"p p p p p p p p p p p p"
-			"c c c c c c c c c c c c"
+			"t t t t t t t t t t t t"
+			"g g g g g g g g g g g g"
 			"f f f f f f f f f f f f";
+	}
+
+	.appBodyContainer {
+		grid-column-gap: 0;
+		grid-template-columns: 1fr;
 	}
 }
 
@@ -242,6 +260,30 @@ header {
 		font-size: 1.5rem;
 	}
 
+	.appHeroContainer header {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 8px;
+		padding-bottom: 4px;
+	}
+
+	.appHeroContainer .scroll {
+		flex: 1 1 auto;
+		min-width: 0;
+		width: auto;
+		justify-content: flex-end;
+	}
+
+	.portfolioContainer header {
+		flex-direction: column;
+	}
+
+	.portfolioNav.scroll {
+		width: 100%;
+		justify-content: center;
+	}
+
 } 
 
 .scroll::-webkit-scrollbar {
@@ -322,8 +364,84 @@ nav > ul li a:active {
 @media only screen and (max-width: 992px) {
 
 	.appInfo {
-		padding-top: 50px;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		padding-top: 24px;
+		padding-bottom: 36px;
+	}
+
+	.appIconShadow {
+		width: auto;
 		justify-content: center;
+	}
+
+	.appNamePriceContainer {
+		width: 100%;
+		margin-left: 0;
+		align-items: center;
+	}
+
+	.appName {
+		margin-top: 0;
+		text-align: center;
+		font-size: 2.6rem;
+		line-height: 1.25;
+	}
+
+	.appPrice {
+		margin-top: 8px;
+		text-align: center;
+	}
+
+	.appDescriptionContainer {
+		font-size: 1.7rem;
+		margin-top: 0;
+		line-height: 1.55;
+		text-align: center;
+	}
+
+	.downloadButtonsContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		width: 100%;
+		margin-top: 4px;
+	}
+
+	.appStore,
+	.playStore {
+		height: 54px;
+		width: auto;
+		max-width: min(220px, 100%);
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+	.appHeroContainer header {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 8px;
+		padding-bottom: 4px;
+	}
+
+	.appHeroContainer .logo {
+		flex: 0 0 auto;
+		min-height: 44px;
+		height: auto;
+		margin-right: 0;
+		padding: 4px 0;
+		justify-content: flex-start;
+	}
+
+	.appHeroContainer .scroll {
+		flex: 1 1 auto;
+		min-width: 0;
+		height: auto;
+		min-height: 44px;
+		justify-content: flex-end;
 	}
 
 } 
@@ -362,42 +480,13 @@ nav > ul li a:active {
 @media only screen and (max-width: 768px) {
 
 	.appInfo {
-		padding-top: 28px;
-		padding-bottom: 32px;
-	}
-
-	.appNamePriceContainer {
-		width: 100%;
-		margin-left: 0;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.appName {
-		margin-top: 20px;
-		text-align: center;
-		font-size: 2.6rem;
-		line-height: 1.25;
-	}
-
-	.appPrice {
-		margin-top: 10px;
-		text-align: center;
-	}
-
-	.appDescriptionContainer {
-		font-size: 1.7rem;
-		margin-top: 20px;
-		line-height: 1.55;
+		padding-top: 20px;
+		padding-bottom: 28px;
+		gap: 16px;
 	}
 
 	.appHeroContainer {
 		grid-template-rows: auto auto auto;
-	}
-
-	.appIconShadow {
-		width: 100%;
-		justify-content: center;
 	}
 
 } 
@@ -472,7 +561,7 @@ nav > ul li a:active {
 .iphonePreviewBlock {
 	grid-area: p;
 	margin-top: 32px;
-	margin-bottom: 40px;
+	margin-bottom: 24px;
 	--frame-w: 400px;
 	--screen-x: 26px;
 	--screen-y: 23px;
