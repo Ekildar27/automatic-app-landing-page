@@ -17,17 +17,17 @@
                 <div class="appGrid" id="appGrid">
                     {% for app in site.apps %}
                     <a class="appCard" href="{{ app.url | relative_url }}" data-app-id="{{ app.ios_app_id }}" data-app-country="{{ app.ios_app_country | default: site.ios_app_country }}" target="_self">
-                        <div class="appCardVisual">
+                        <div class="appCardHeader">
                             <div class="appCardIconFrame">
                                 <img class="appCardIcon" src="" alt="{{ app.app_name | default: app.title }}" data-role="icon">
                             </div>
+                            <div class="appCardMeta">
+                                <h2 class="appCardName" data-role="name">{{ app.app_name | default: app.title }}</h2>
+                                <p class="appCardPrice" data-role="price">{% if app.app_price %}{{ app.app_price }}{% endif %}</p>
+                            </div>
                         </div>
-                        <div class="appCardBody">
-                            <h2 class="appCardName" data-role="name">{{ app.app_name | default: app.title }}</h2>
-                            <p class="appCardPrice" data-role="price">{% if app.app_price %}{{ app.app_price }}{% endif %}</p>
-                            <p class="appCardDesc">{{ app.app_description }}</p>
-                            <span class="appCardLink">View details →</span>
-                        </div>
+                        <p class="appCardDesc">{{ app.app_description }}</p>
+                        <span class="appCardLink">View details →</span>
                     </a>
                     {% endfor %}
                 </div>

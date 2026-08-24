@@ -5,31 +5,34 @@
 {% if ios_id %}
 
 <script>
-function upgradeScreenshotUrl(url) {
-    if (!url) return url;
-    return url.replace(/\/(\d+)x(\d+)bb\.(jpg|png|webp)/i, function(match, w, h, ext) {
-        if (parseInt(h, 10) >= 1000) return match;
-        return '/1290x2796bb.' + ext.toLowerCase();
-    });
-}
-
 function screenshotFallbackUrls(url) {
-    var upgraded = upgradeScreenshotUrl(url);
-    var urls = [url];
-    if (upgraded !== url) urls.push(upgraded);
-    var match = url.match(/\/(\d+x\d+bb|\d+x0w)\.(jpg|png|webp)/i);
-    if (match) {
-        urls.push(url.replace(match[0], '/643x0w.' + match[2]));
-        urls.push(url.replace(match[0], '/392x696bb.' + match[2]));
-    }
-    return urls.filter(function(u, i, arr) { return u && arr.indexOf(u) === i; });
+    if (!url) return [];
+
+    var extMatch = url.match(/\.(jpg|png|webp)(?:\?|$)/i);
+    var ext = extMatch ? extMatch[1].toLowerCase() : 'jpg';
+    var sizeMatch = url.match(/\/(\d+x\d+bb|\d+x0w)\.(jpg|png|webp)/i);
+
+    if (!sizeMatch) return [url];
+
+    var base = url.slice(0, url.lastIndexOf('/'));
+    var candidates = [
+        base + '/1290x2796bb.' + ext,
+        base + '/1242x2688bb.' + ext,
+        base + '/643x0w.' + ext,
+        base + '/828x1792bb.' + ext,
+        url
+    ];
+
+    return candidates.filter(function(u, i, arr) {
+        return u && arr.indexOf(u) === i;
+    });
 }
 
 function dedupeScreenshotUrls(urls) {
     var seen = {};
     return urls.filter(function(url) {
         if (!url) return false;
-        var key = url.replace(/\/(\d+)x(\d+)bb\.(jpg|png|webp)/i, '');
+        var key = url.replace(/\/(\d+x\d+bb|\d+x0w)\.(jpg|png|webp)/i, '');
         if (seen[key]) return false;
         seen[key] = true;
         return true;
@@ -37,7 +40,9 @@ function dedupeScreenshotUrls(urls) {
 }
 
 function collectAppStoreScreenshots(appInfo) {
-    return dedupeScreenshotUrls(appInfo.screenshotUrls || []);
+    return dedupeScreenshotUrls(appInfo.screenshotUrls || []).map(function(url) {
+        return screenshotFallbackUrls(url)[0];
+    });
 }
 
 function loadScreenshotImage($screen, urls, onDone) {
