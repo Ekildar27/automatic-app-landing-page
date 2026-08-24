@@ -69,7 +69,13 @@
 @media only screen and (max-width: 768px) {
 
 	.headerBackground {
-		height: 80px;
+		height: auto;
+		min-height: 0;
+	}
+
+	.imageWrapper {
+		min-height: 0;
+		border-radius: 0 0 24px 24px;
 	}
 
 }
@@ -102,7 +108,14 @@
 @media only screen and (max-width: 768px) {
 
 	.container {
-		grid-template-rows: 80px auto auto auto;
+		grid-template-rows: auto auto auto auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.appBodyContainer {
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 
@@ -110,8 +123,8 @@
 
 	.container {
 		grid-column-gap: 0px;
-		grid-template-columns: 1;
-		grid-template-rows: 115px auto auto auto auto;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto auto auto;
 		grid-template-areas: 
 			"h h h h h h h h h h h h"
 			"i i i i i i i i i i i i"
@@ -162,14 +175,21 @@ header {
 @media only screen and (max-width: 768px) {
 
 	.logo {
-		height: 80px;
-		margin-right: 0px;
+		height: auto;
+		min-height: 48px;
+		margin-right: 0;
+		justify-content: center;
+		padding: 8px 0 4px;
 	}
 
 	.logo > p {
 		display: none;
 	}
-	
+
+	.divider {
+		display: none;
+	}
+
 } 
 
 .headerIcon {
@@ -178,19 +198,6 @@ header {
 	-webkit-clip-path: url(#shape);
 	clip-path: url(#shape);
 }
-
-@media only screen and (max-width: 768px) {
-
-	.divider {
-		position: relative;
-		min-width: 1px;
-		max-width: 1px;
-		background-color:rgba(127, 127, 127, 0.2);
-		display: inline-block;
-		margin-left: 15px;
-	}	
-	
-} 
 
 
 // Navigation Links
@@ -212,14 +219,29 @@ header {
 
 @media only screen and (max-width: 768px) {
 
+	header {
+		flex-direction: column;
+		align-items: stretch;
+		margin-right: 0;
+		gap: 4px;
+		padding-bottom: 8px;
+	}
+
 	.scroll {
-		height: 80px;
-		padding-top: 100px;
-		padding-bottom: 100px;
-		margin-top: -60px;
+		height: auto;
+		min-height: 44px;
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
 		justify-content: flex-start;
-	}	
-	
+		align-items: center;
+		width: 100%;
+	}
+
+	nav > ul {
+		font-size: 1.5rem;
+	}
+
 } 
 
 .scroll::-webkit-scrollbar {
@@ -339,23 +361,45 @@ nav > ul li a:active {
 
 @media only screen and (max-width: 768px) {
 
+	.appInfo {
+		padding-top: 28px;
+		padding-bottom: 32px;
+	}
+
 	.appNamePriceContainer {
 		width: 100%;
-		margin-left: 0px;
+		margin-left: 0;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.appName {
-		margin-top: 30px;
+		margin-top: 20px;
 		text-align: center;
+		font-size: 2.6rem;
+		line-height: 1.25;
 	}
-	
+
 	.appPrice {
-		margin-top: 13px;
+		margin-top: 10px;
 		text-align: center;
 	}
-	
+
+	.appDescriptionContainer {
+		font-size: 1.7rem;
+		margin-top: 20px;
+		line-height: 1.55;
+	}
+
+	.appHeroContainer {
+		grid-template-rows: auto auto auto;
+	}
+
+	.appIconShadow {
+		width: 100%;
+		justify-content: center;
+	}
+
 } 
 
 .appDescriptionContainer {
@@ -509,8 +553,8 @@ nav > ul li a:active {
 @media only screen and (max-width: 992px) {
 
 	.iphonePreviewBlock {
-		margin-top: 47px;
-		padding-bottom: 20px;
+		margin-top: 32px;
+		padding-bottom: 16px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -520,6 +564,94 @@ nav > ul li a:active {
 		--screen-w: 226px;
 		--screen-h: 488px;
 		--screen-radius: 22px;
+	}
+
+}
+
+@media only screen and (max-width: 480px) {
+
+	.iphonePreviewBlock {
+		margin-top: 24px;
+		--frame-w: min(240px, calc(100vw - 48px));
+		--screen-x: 16px;
+		--screen-y: 16px;
+		--screen-w: calc(var(--frame-w) - 34px);
+		--screen-h: calc(var(--frame-w) * 488 / 260);
+		--screen-radius: 20px;
+	}
+
+	.appIconLarge {
+		width: 96px;
+		height: 96px;
+	}
+
+	.downloadButtonsContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+		width: 100%;
+		margin-top: 28px;
+	}
+
+	.appStore,
+	.playStore {
+		height: 54px;
+		width: auto;
+		max-width: min(220px, 100%);
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+	.feature {
+		padding-top: 28px;
+	}
+
+	.feature:nth-child(-n+3),
+	.feature:nth-child(1) {
+		padding-top: 28px;
+	}
+
+	.feature:nth-child(1) {
+		padding-top: 0;
+	}
+
+	.featureText > h3 {
+		font-size: 1.8rem;
+	}
+
+	.featureText > p {
+		font-size: 1.5rem;
+	}
+
+	.footerText {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		font-size: 1.5rem;
+	}
+
+	.whatsNewTitle {
+		font-size: 2rem;
+	}
+
+	.whatsNewBody {
+		font-size: 1.6rem;
+	}
+
+}
+
+@media only screen and (max-width: 375px) {
+
+	.portfolioTitle {
+		font-size: 2.4rem;
+	}
+
+	.appGrid {
+		row-gap: 64px;
+	}
+
+	.appCard {
+		padding: 68px 16px 24px;
 	}
 
 }
@@ -908,7 +1040,9 @@ footer {
 
 @media only screen and (max-width: 768px) {
 	.portfolioContainer header {
-		min-height: 64px;
+		min-height: 0;
+		padding-top: 8px;
+		padding-bottom: 4px;
 	}
 
 	.portfolioNav.scroll {
@@ -916,6 +1050,74 @@ footer {
 		padding-top: 0;
 		padding-bottom: 0;
 		margin-top: 0;
+		justify-content: center;
+	}
+
+	.portfolioHero {
+		border-radius: 0 0 24px 24px;
+
+		&::after {
+			height: 80px;
+		}
+	}
+
+	.portfolioIntro {
+		padding-top: 12px;
+		padding-bottom: 20px;
+	}
+
+	.portfolioTitle {
+		font-size: 2.8rem;
+		margin-bottom: 12px;
+		line-height: 1.2;
+		padding: 0 4px;
+	}
+
+	.portfolioSubtitle {
+		font-size: 1.6rem;
+		line-height: 1.5;
+		padding: 0 12px;
+	}
+
+	.appGrid {
+		row-gap: 72px;
+		padding-top: 36px;
+		padding-bottom: 48px;
+	}
+
+	.appCard {
+		padding: 72px 20px 28px;
+		border-radius: 20px;
+	}
+
+	.appCardName {
+		font-size: 1.9rem;
+	}
+
+	.appCardPrice {
+		font-size: 1.4rem;
+		margin-bottom: 12px;
+	}
+
+	.appCardDesc {
+		font-size: 1.5rem;
+		line-height: 1.55;
+		-webkit-line-clamp: 4;
+	}
+
+	.appCardLink {
+		font-size: 1.4rem;
+		margin-top: 16px;
+	}
+
+	.appCardIconFrame {
+		width: 76px;
+		height: 76px;
+		border-radius: 18px;
+	}
+
+	.appCardIcon {
+		border-radius: 15px;
 	}
 }
 
