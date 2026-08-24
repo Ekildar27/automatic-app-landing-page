@@ -1,46 +1,66 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-{% assign app_ids = site.apps | map: 'ios_app_id' | join: ',' %}
-
 <script>
+function markIconLoaded($icon) {
+    $icon.addClass('is-loaded');
+}
+
+function bindIconLoad($icon) {
+    $icon.one('load', function() {
+        markIconLoaded($(this));
+    }).each(function() {
+        if (this.complete && this.naturalWidth) {
+            markIconLoaded($(this));
+        }
+    });
+}
+
 $(function() {
-    var apiURL = "https://itunes.apple.com/lookup?id={{ app_ids }}&country={{ site.ios_app_country }}&callback=?";
+    var $cards = $(".appCard");
+    if (!$cards.length) return;
 
-    $.getJSON(apiURL, function(json) {
-        if (!json.results || !json.results.length) return;
+    var pending = 0;
 
-        console.info("Portfolio app metadata loaded from Apple API.");
+    $cards.each(function() {
+        var $card = $(this);
+        var appId = $card.data("app-id");
+        var country = $card.data("app-country") || "us";
+        if (!appId) return;
 
-        var appsById = {};
-        json.results.forEach(function(appInfo) {
-            appsById[appInfo.trackId] = appInfo;
-        });
+        pending += 1;
+        var apiURL = "https://itunes.apple.com/lookup?id=" + appId + "&country=" + country + "&callback=?";
 
-        $(".appCard").each(function() {
-            var $card = $(this);
-            var appId = parseInt($card.data("app-id"), 10);
-            var appInfo = appsById[appId];
-            if (!appInfo) return;
+        $.getJSON(apiURL, function(json) {
+            if (!json.results || !json.results.length) return;
 
-            $card.find('[data-role="icon"]').attr({
+            var appInfo = json.results[0];
+            var $icon = $card.find('[data-role="icon"]');
+
+            $icon.attr({
                 src: appInfo.artworkUrl512,
                 alt: appInfo.trackName
-            }).one('load', function() {
-                $(this).addClass('is-loaded');
-            }).each(function() {
-                if (this.complete) {
-                    $(this).addClass('is-loaded');
-                }
             });
+            bindIconLoad($icon);
 
             $card.find('[data-role="name"]').text(appInfo.trackName);
             $card.find('[data-role="price"]').text(appInfo.formattedPrice);
+        }).always(function() {
+            pending -= 1;
+            if (pending <= 0) {
+                console.info("Portfolio app metadata loaded from Apple API.");
+            }
         });
-
-        var firstApp = json.results[0];
-        if (firstApp) {
-            $('link[rel="shortcut icon"]').attr("href", firstApp.artworkUrl512);
-        }
     });
+
+    var firstCard = $cards.first();
+    if (firstCard.length) {
+        var firstId = firstCard.data("app-id");
+        var firstCountry = firstCard.data("app-country") || "us";
+        $.getJSON("https://itunes.apple.com/lookup?id=" + firstId + "&country=" + firstCountry + "&callback=?", function(json) {
+            if (json.results && json.results.length) {
+                $('link[rel="shortcut icon"]').attr("href", json.results[0].artworkUrl512);
+            }
+        });
+    }
 });
 </script>

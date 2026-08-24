@@ -61,7 +61,7 @@ function initScreenshotCarousel(urls) {
         });
 
         $screen.attr('src', variants[0]);
-        $screen.removeClass("hidden");
+        $screen.removeClass("hidden").addClass("iphoneScreenLoaded");
         $(".videoContainer").addClass("hidden");
         $counter.text((current + 1) + ' / ' + urls.length);
         $dots.find('.screenshotDot').removeClass('active').eq(current).addClass('active');

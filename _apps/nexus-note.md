@@ -1,5 +1,7 @@
 ---
+title: Nexus Note
 layout: app
+app_name: Nexus Note
 ios_app_id: 6797005454
 app_description: Your private second brain — capture ideas, links, photos, and voice notes effortlessly.
 device_color: black

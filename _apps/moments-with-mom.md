@@ -1,5 +1,7 @@
 ---
+title: Moments with Mom
 layout: app
+app_name: Moments with Mom
 ios_app_id: 6801768385
 app_description: Help families listen — and keep — what Mom has never written down.
 device_color: coral

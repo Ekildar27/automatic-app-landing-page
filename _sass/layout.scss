@@ -1,5 +1,6 @@
 .imageWrapper {					// Sets the background image in the header area
-	height: 714px;
+	min-height: 714px;
+	height: auto;
 	background: 
 		linear-gradient(
 		rgba($image-overlay-color, $image-overlay-transparency), 
@@ -18,6 +19,51 @@
 .headerBackground {
 	height: 115px;
 	background-color: rgba($header-color, $header-transparency);
+}
+
+.portfolioHeaderBackground,
+.appHeroBackground {
+	height: auto;
+	min-height: 115px;
+}
+
+.appHero {
+	min-height: 0;
+}
+
+.appBody {
+	background-color: $body-color;
+}
+
+.appBodyContainer {
+	display: grid;
+	margin: auto;
+	max-width: $content-width;
+	padding-left: 15px;
+	padding-right: 15px;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto auto;
+	grid-column-gap: 30px;
+	grid-template-areas:
+		"c c c c c c c c c c c c"
+		"f f f f f f f f f f f f";
+}
+
+.appHeroContainer {
+	grid-template-rows: 115px auto;
+	grid-template-areas:
+		"h h h h h h h h h h h h"
+		"p p p p p i i i i i i i";
+}
+
+@media only screen and (max-width: 992px) {
+	.appHeroContainer {
+		grid-template-rows: 115px auto auto;
+		grid-template-areas:
+			"h h h h h h h h h h h h"
+			"p p p p p p p p p p p p"
+			"i i i i i i i i i i i i";
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -39,7 +85,7 @@
 	padding-left: 15px;
 	padding-right: 15px;
 	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 115px 876px auto auto;
+	grid-template-rows: 115px auto auto auto;
 	grid-column-gap: 30px;
 	grid-template-areas: 
 		"h h h h h h h h h h h h"
@@ -55,8 +101,8 @@
 
 @media only screen and (max-width: 768px) {
 
-	.container {					// Set up the container for the site content
-		grid-template-rows: 80px 811px auto auto;
+	.container {
+		grid-template-rows: 80px auto auto auto;
 	}
 }
 
@@ -246,7 +292,8 @@ nav > ul li a:active {
 	grid-area: i;
 	display: flex;
 	flex-wrap: wrap;
-	padding-top: 140px;
+	padding-top: 80px;
+	padding-bottom: 40px;
 	align-content: flex-start;
 }
 
@@ -380,7 +427,8 @@ nav > ul li a:active {
 
 .iphonePreviewBlock {
 	grid-area: p;
-	margin-top: 68px;
+	margin-top: 32px;
+	margin-bottom: 40px;
 	--frame-w: 400px;
 	--screen-x: 26px;
 	--screen-y: 23px;
@@ -428,6 +476,10 @@ nav > ul li a:active {
 	object-position: top center;
 	display: block;
 	background-color: #111;
+}
+
+.iphoneScreenPlaceholder {
+	visibility: visible;
 }
 
 .videoContainer {
@@ -492,7 +544,7 @@ nav > ul li a:active {
 	justify-content: flex-start;
 	flex-grow: 1;
 	flex-wrap: wrap;
-	margin-top: 93px;
+	margin-top: 48px;
 	width: 100%;
 }
 
@@ -808,7 +860,7 @@ footer {
 
 .portfolioHero {
 	position: relative;
-	min-height: auto;
+	min-height: 0;
 	height: auto;
 	border-radius: 0px 0px 40px 40px;
 	overflow: hidden;
@@ -819,17 +871,17 @@ footer {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		height: 180px;
+		height: 120px;
 		background: linear-gradient(
 			to bottom,
 			rgba($image-overlay-color, 0) 0%,
-			rgba($image-overlay-color, 0.55) 100%
+			rgba($image-overlay-color, 0.45) 100%
 		);
 		pointer-events: none;
 		z-index: 0;
 	}
 
-	.headerBackground,
+	.portfolioHeaderBackground,
 	.portfolioContainer {
 		position: relative;
 		z-index: 1;
@@ -837,7 +889,7 @@ footer {
 }
 
 .portfolioContainer {
-	grid-template-rows: 115px auto auto auto;
+	grid-template-rows: auto auto auto auto;
 	grid-template-areas:
 		"h h h h h h h h h h h h"
 		"t t t t t t t t t t t t"
@@ -845,17 +897,36 @@ footer {
 		"f f f f f f f f f f f f";
 }
 
+.portfolioContainer header {
+	justify-content: flex-end;
+	height: auto;
+	min-height: 80px;
+	align-items: center;
+}
+
+.portfolioNav {
+	height: auto;
+	justify-content: flex-end;
+}
+
 @media only screen and (max-width: 768px) {
-	.portfolioContainer {
-		grid-template-rows: 80px auto auto auto;
+	.portfolioContainer header {
+		min-height: 64px;
+	}
+
+	.portfolioNav.scroll {
+		height: auto;
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
 	}
 }
 
 .portfolioIntro {
 	grid-area: t;
 	text-align: center;
-	padding-top: 40px;
-	padding-bottom: 12px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
 
 .portfolioTitle {
@@ -877,8 +948,8 @@ footer {
 	grid-area: g;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 32px 24px;
-	padding-top: 56px;
+	gap: 40px 24px;
+	padding-top: 32px;
 	padding-bottom: 48px;
 }
 
@@ -939,9 +1010,14 @@ footer {
 	height: 100%;
 	border-radius: 17px;
 	object-fit: cover;
-	background: linear-gradient(135deg, #ececec 0%, #f8f8f8 100%);
-	opacity: 0;
+	background: linear-gradient(135deg, #d8d8d8 0%, #efefef 100%);
+	opacity: 1;
 	transition: opacity 0.25s ease;
+}
+
+.appCardIcon:not([src]),
+.appCardIcon[src=""] {
+	opacity: 1;
 }
 
 .appCardIcon.is-loaded {
@@ -971,6 +1047,7 @@ footer {
 	font-size: 1.6rem;
 	font-weight: 600;
 	margin-bottom: 10px;
+	min-height: 1.6rem;
 }
 
 .appCardDesc {
