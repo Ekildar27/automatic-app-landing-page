@@ -1,9 +1,7 @@
-# GitHub Pages project site URL (required for CSS/links on github.io)
-# When custom domain DNS is ready, switch to:
-#   url: "https://ekildar.kfds.fr"
-#   baseurl: ""
-url: "https://ekildar27.github.io"
-baseurl: "/automatic-app-landing-page"
+# Custom domain (GitHub Pages)
+url: "https://ekildar.kdns.fr"
+baseurl: ""
+# Local preview with github.io paths: jekyll serve --config _config.yml,_config_dev.yml
 
 # Site Info (portfolio homepage)
 page_title                                : Ekildar Office Apps

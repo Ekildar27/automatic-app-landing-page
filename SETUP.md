@@ -78,22 +78,31 @@ whats_new:
 
 ## 部署到 GitHub Pages
 
-站点通过 GitHub Actions 自动部署。`_config.yml` 中已配置：
+站点通过 GitHub Actions 自动部署。生产环境使用自定义域名：
 
 ```yaml
-url: "https://ekildar27.github.io"
-baseurl: "/automatic-app-landing-page"
-```
-
-这保证在 `https://ekildar27.github.io/automatic-app-landing-page/` 下 CSS 和页面跳转正常。
-
-**注意：** 若在 GitHub Pages 设置里绑定了自定义域名但 DNS 尚未生效，不要改 `baseurl` 为空，否则 github.io 地址会排版错乱、链接 404。
-
-自定义域名 `ekildar.kfds.fr` DNS 生效后，再改 `_config.yml`：
-
-```yaml
-url: "https://ekildar.kfds.fr"
+url: "https://ekildar.kdns.fr"
 baseurl: ""
 ```
 
-然后 push，并在 GitHub Pages 设置里勾选 Enforce HTTPS。
+本地预览（保留 github.io 子路径）：
+
+```bash
+jekyll serve --config _config.yml,_config_dev.yml --host 127.0.0.1 --port 4000
+```
+
+### 自定义域名 DNS（kdns.fr）
+
+在 kdns 面板为 `ekildar.kdns.fr` 添加 **CNAME**（推荐）：
+
+| 类型 | 名称 | 值 |
+|------|------|-----|
+| CNAME | `ekildar` | `ekildar27.github.io` |
+
+若经 Cloudflare 代理，GitHub 校验 DNS 可能失败：请先将该记录改为 **灰云（DNS only）**，验证通过后再开橙云。
+
+GitHub Pages → Custom domain 填 **`ekildar.kdns.fr`**（不要带 `www`）。仓库根目录 `CNAME` 文件内容相同。
+
+`www.ekildar.kdns.fr` 无需配置；若 GitHub 报 `www` 相关错误，说明填错域名或浏览器缓存了旧设置，改回 apex 即可。
+
+DNS 生效后勾选 **Enforce HTTPS**。
