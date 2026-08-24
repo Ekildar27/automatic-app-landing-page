@@ -7,8 +7,9 @@ cd "$ROOT"
 
 BRANCH="feature/multi-app-showcase"
 UPSTREAM="https://github.com/emilbaehr/automatic-app-landing-page.git"
+MASTER_BRANCH="$(git branch --show-current)"
 
-if [[ "$(git branch --show-current)" != "master" ]]; then
+if [[ "$MASTER_BRANCH" != "master" ]]; then
   echo "Switch to master first."
   exit 1
 fi
@@ -32,6 +33,14 @@ cat > _config.yml <<'YAML'
 page_title                                : My Apps
 site_description                          : A collection of mobile apps. Add yours in _apps/.
 ios_app_country                           : us
+
+# GitHub Pages project site (user.github.io/repo-name) — uncomment and set yours:
+# url: "https://YOUR_USERNAME.github.io"
+# baseurl: "/YOUR_REPO_NAME"
+#
+# Custom domain at root — use after DNS is live:
+# url: "https://www.example.com"
+# baseurl: ""
 
 enable_smart_app_banner                   : false
 auto_load_app_store_screenshots           : true
@@ -82,6 +91,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - SETUP.md
 
 collections:
   pages:
@@ -97,7 +107,9 @@ YAML
 rm -f _apps/*.md
 cat > _apps/example-app.md <<'MD'
 ---
+title: Example App
 layout: app
+app_name: Example App
 ios_app_id: 1234793120
 app_description: Example app. Replace with your App Store ID in _apps/your-app.md.
 device_color: black
@@ -108,12 +120,64 @@ features:
   - title: Multi-App Portfolio
     description: Add more apps by creating files in _apps/.
     fontawesome_icon_name: mobile
+  - title: App Store Screenshots
+    description: iPhone screenshots load automatically with carousel controls.
+    fontawesome_icon_name: images
 ---
+MD
+
+cat > MULTI_APP.md <<'MD'
+# Multi-App Portfolio
+
+This fork adds a portfolio homepage and per-app detail pages.
+
+## Add an app
+
+Create `_apps/my-app.md`:
+
+```yaml
+---
+title: My App
+layout: app
+app_name: My App
+ios_app_id: 1234567890
+app_description: One-line description
+device_color: black
+features:
+  - title: Feature
+    description: Description
+    fontawesome_icon_name: star
+---
+```
+
+Optional: `ios_app_country: cn` for region-specific App Store lookup.
+
+## Local preview
+
+```bash
+bundle install
+jekyll serve --config _config.yml,_config_dev.yml
+```
+
+## GitHub Pages
+
+For `https://username.github.io/repo-name/`, set in `_config.yml`:
+
+```yaml
+url: "https://username.github.io"
+baseurl: "/repo-name"
+```
+
+Deploy with the included GitHub Actions workflow (`.github/workflows/jekyll.yml`).
 MD
 
 git add -A
 git commit -m "Add multi-app portfolio landing page support" \
-  -m "Portfolio homepage, per-app pages, iTunes screenshots and release notes." \
+  -m "- Portfolio homepage with app cards (iTunes icon, name, price)" \
+  -m "- Per-app detail pages under /apps/:name/" \
+  -m "- App Store iPhone screenshots with carousel" \
+  -m "- What's New hub and per-app release notes" \
+  -m "- GitHub Pages baseurl-safe asset paths" \
   || true
 
 git push -u origin "$BRANCH" --force
@@ -125,4 +189,4 @@ echo ""
 echo "Done. Open this URL to create Pull Request to upstream:"
 echo "$PR_URL"
 echo ""
-echo "Local master unchanged (ekildar.kfds.fr production config)."
+echo "Local master unchanged (production config preserved on master)."
