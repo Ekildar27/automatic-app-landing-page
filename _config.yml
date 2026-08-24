@@ -1,19 +1,19 @@
-# GitHub Pages project site URL (required for CSS/links on github.io)
-# When custom domain DNS is ready, switch to:
-#   url: "https://ekildar.kfds.fr"
-#   baseurl: ""
-url: "https://ekildar27.github.io"
-baseurl: "/automatic-app-landing-page"
-
 # Site Info (portfolio homepage)
-page_title                                : Ekildar Office Apps
-site_description                          : A collection of mobile apps crafted with care.
+page_title                                : My Apps
+site_description                          : A collection of mobile apps. Add yours in _apps/.
 ios_app_country                           : us
+
+# GitHub Pages project site (user.github.io/repo-name) — uncomment and set yours:
+# url: "https://YOUR_USERNAME.github.io"
+# baseurl: "/YOUR_REPO_NAME"
+#
+# Custom domain at root — use after DNS is live:
+# url: "https://www.example.com"
+# baseurl: ""
 
 enable_smart_app_banner                   : false
 auto_load_app_store_screenshots           : true
 
-# Information About Yourself
 your_name                                 :
 your_link                                 :
 your_city                                 :
@@ -29,7 +29,6 @@ mastodon_link                             :
 
 presskit_download_link                    :
 
-# Theme Settings (shared across all app pages)
 topbar_color                              : "#000000"
 topbar_transparency                       : 0.1
 topbar_title_color                        : "#ffffff"
@@ -39,9 +38,7 @@ cover_overlay_color                       : "#363b3d"
 cover_overlay_transparency                : 0.8
 
 device_color                              : black
-
 body_background_color                     : "#ffffff"
-
 link_color                                : "#1d63ea"
 
 app_title_color                           : "#ffffff"
@@ -50,18 +47,11 @@ app_description_color                     : "#ffffff"
 
 feature_title_color                       : "#000000"
 feature_text_color                        : "#666666"
-
 feature_icons_foreground_color            : "#1d63ea"
 feature_icons_background_color            : "#e6e6e6"
-
 social_icons_foreground_color             : "#666666"
 social_icons_background_color             : "#e6e6e6"
-
 footer_text_color                         : "#666666"
-
-####################################################
-### Jekyll Configuration. No need to touch this. ###
-####################################################
 
 sass:
   style: :compressed
@@ -70,6 +60,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - SETUP.md
 
 collections:
   pages:
