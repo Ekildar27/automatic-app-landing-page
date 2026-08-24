@@ -945,7 +945,7 @@ footer {
 	grid-area: g;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 48px 32px;
+	gap: 64px 40px;
 	padding-top: 16px;
 	padding-bottom: 64px;
 }
@@ -953,7 +953,7 @@ footer {
 @media only screen and (max-width: 992px) {
 	.appGrid {
 		grid-template-columns: 1fr;
-		gap: 56px;
+		gap: 72px;
 		padding-top: 24px;
 	}
 }
