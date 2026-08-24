@@ -4,16 +4,22 @@
 {% include head.html %}
 
 <body>
-    <div class="imageWrapper portfolioHero">
-        <div class="headerBackground portfolioHeaderBackground">
-            <div class="container portfolioContainer">
-                {% include header-portfolio.html %}
+    <div class="portfolioPage">
+        <div class="imageWrapper portfolioHero">
+            <div class="headerBackground portfolioHeaderBackground">
+                <div class="container portfolioHeroContainer">
+                    {% include header-portfolio.html %}
 
-                <div class="portfolioIntro">
-                    <h1 class="portfolioTitle">{{ site.page_title }}</h1>
-                    <p class="portfolioSubtitle">{{ site.site_description }}</p>
+                    <div class="portfolioIntro">
+                        <h1 class="portfolioTitle">{{ site.page_title }}</h1>
+                        <p class="portfolioSubtitle">{{ site.site_description }}</p>
+                    </div>
                 </div>
+            </div>
+        </div>
 
+        <div class="portfolioAppsSection">
+            <div class="container portfolioAppsContainer">
                 <div class="appGrid" id="appGrid">
                     {% for app in site.apps %}
                     <a class="appCard" href="{{ app.url | relative_url }}" data-app-id="{{ app.ios_app_id }}" data-app-country="{{ app.ios_app_country | default: site.ios_app_country }}" target="_self">
@@ -33,9 +39,10 @@
                 </div>
 
                 {% include footer.html %}
-                {% include appstoreimages-portfolio.html %}
             </div>
         </div>
+
+        {% include appstoreimages-portfolio.html %}
     </div>
 </body>
 </html>

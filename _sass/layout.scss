@@ -110,18 +110,15 @@
 
 @media only screen and (max-width: 768px) {
 
-	.container:not(.portfolioContainer):not(.appBodyContainer) {
+	.container:not(.portfolioHeroContainer):not(.portfolioAppsContainer):not(.appBodyContainer) {
 		grid-template-rows: auto auto auto auto;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
 
-	.appBodyContainer {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-
-	.portfolioContainer {
+	.appBodyContainer,
+	.portfolioHeroContainer,
+	.portfolioAppsContainer {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -135,13 +132,22 @@
 		grid-template-columns: 1fr;
 	}
 
-	.portfolioContainer {
+	.portfolioHeroContainer,
+	.portfolioAppsContainer {
 		grid-column-gap: 0;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto auto auto auto;
+	}
+
+	.portfolioHeroContainer {
+		grid-template-rows: auto auto;
 		grid-template-areas:
 			"h h h h h h h h h h h h"
-			"t t t t t t t t t t t t"
+			"t t t t t t t t t t t t";
+	}
+
+	.portfolioAppsContainer {
+		grid-template-rows: auto auto;
+		grid-template-areas:
 			"g g g g g g g g g g g g"
 			"f f f f f f f f f f f f";
 	}
@@ -268,14 +274,7 @@ header {
 		padding-bottom: 4px;
 	}
 
-	.appHeroContainer .scroll {
-		flex: 1 1 auto;
-		min-width: 0;
-		width: auto;
-		justify-content: flex-end;
-	}
-
-	.portfolioContainer header {
+	.portfolioHeroContainer header {
 		flex-direction: column;
 	}
 
@@ -417,31 +416,6 @@ nav > ul li a:active {
 		max-width: min(220px, 100%);
 		margin-right: 0;
 		margin-bottom: 0;
-	}
-
-	.appHeroContainer header {
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		gap: 8px;
-		padding-bottom: 4px;
-	}
-
-	.appHeroContainer .logo {
-		flex: 0 0 auto;
-		min-height: 44px;
-		height: auto;
-		margin-right: 0;
-		padding: 4px 0;
-		justify-content: flex-start;
-	}
-
-	.appHeroContainer .scroll {
-		flex: 1 1 auto;
-		min-width: 0;
-		height: auto;
-		min-height: 44px;
-		justify-content: flex-end;
 	}
 
 } 
@@ -1072,7 +1046,42 @@ footer {
 	}
 }
 
+// App detail — simplified header
+
+.appPageHeader {
+	display: flex;
+	align-items: center;
+	min-height: 48px;
+	padding: 10px 0 6px;
+}
+
+.appBackLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: rgba($header-title-color, 0.88);
+	font-size: 1.6rem;
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	transition: color 0.15s ease;
+
+	i {
+		font-size: 1.3rem;
+		opacity: 0.85;
+	}
+
+	&:hover,
+	&:active {
+		color: $header-title-color;
+	}
+}
+
 // Portfolio homepage
+
+.portfolioPage {
+	background-color: $body-color;
+}
 
 .portfolioHero {
 	position: relative;
@@ -1098,22 +1107,31 @@ footer {
 	}
 
 	.portfolioHeaderBackground,
-	.portfolioContainer {
+	.portfolioHeroContainer {
 		position: relative;
 		z-index: 1;
 	}
 }
 
-.portfolioContainer {
-	grid-template-rows: auto auto auto auto;
+.portfolioHeroContainer {
+	grid-template-rows: auto auto;
 	grid-template-areas:
 		"h h h h h h h h h h h h"
-		"t t t t t t t t t t t t"
+		"t t t t t t t t t t t t";
+}
+
+.portfolioAppsSection {
+	background-color: #fff;
+}
+
+.portfolioAppsContainer {
+	grid-template-rows: auto auto;
+	grid-template-areas:
 		"g g g g g g g g g g g g"
 		"f f f f f f f f f f f f";
 }
 
-.portfolioContainer header {
+.portfolioHeroContainer header {
 	justify-content: flex-end;
 	height: auto;
 	min-height: 96px;
@@ -1128,7 +1146,15 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
-	.portfolioContainer header {
+	.portfolioHero {
+		border-radius: 0;
+
+		&::after {
+			display: none;
+		}
+	}
+
+	.portfolioHeroContainer header {
 		min-height: 0;
 		padding-top: 8px;
 		padding-bottom: 4px;
@@ -1142,71 +1168,129 @@ footer {
 		justify-content: center;
 	}
 
-	.portfolioHero {
-		border-radius: 0 0 24px 24px;
-
-		&::after {
-			height: 80px;
-		}
-	}
-
 	.portfolioIntro {
-		padding-top: 12px;
+		padding-top: 8px;
 		padding-bottom: 20px;
 	}
 
 	.portfolioTitle {
-		font-size: 2.8rem;
-		margin-bottom: 12px;
+		font-size: 2.6rem;
+		margin-bottom: 10px;
 		line-height: 1.2;
 		padding: 0 4px;
 	}
 
 	.portfolioSubtitle {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 		line-height: 1.5;
 		padding: 0 12px;
 	}
 
+	.portfolioAppsSection {
+		border-radius: 20px 20px 0 0;
+		margin-top: -16px;
+		position: relative;
+		z-index: 2;
+	}
+
 	.appGrid {
-		row-gap: 72px;
-		padding-top: 36px;
-		padding-bottom: 48px;
+		row-gap: 0;
+		padding-top: 4px;
+		padding-bottom: 16px;
 	}
 
 	.appCard {
-		padding: 72px 20px 28px;
-		border-radius: 20px;
+		flex-direction: row;
+		align-items: center;
+		gap: 14px;
+		padding: 14px 0;
+		border-radius: 0;
+		box-shadow: none;
+		background: transparent;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+		transform: none;
 	}
 
-	.appCardName {
-		font-size: 1.9rem;
+	.appCard:last-child {
+		border-bottom: none;
 	}
 
-	.appCardPrice {
-		font-size: 1.4rem;
-		margin-bottom: 12px;
+	.appCard:hover {
+		transform: none;
+		box-shadow: none;
 	}
 
-	.appCardDesc {
-		font-size: 1.5rem;
-		line-height: 1.55;
-		-webkit-line-clamp: 4;
-	}
-
-	.appCardLink {
-		font-size: 1.4rem;
-		margin-top: 16px;
+	.appCardVisual {
+		position: static;
+		transform: none;
+		left: auto;
+		flex-shrink: 0;
 	}
 
 	.appCardIconFrame {
-		width: 76px;
-		height: 76px;
-		border-radius: 18px;
+		width: 52px;
+		height: 52px;
+		border-radius: 12px;
+		padding: 0;
+		box-shadow: none;
 	}
 
 	.appCardIcon {
-		border-radius: 15px;
+		border-radius: 12px;
+	}
+
+	.appCardBody {
+		flex: 1;
+		min-width: 0;
+		text-align: left;
+		align-items: flex-start;
+	}
+
+	.appCardName {
+		font-size: 1.7rem;
+		margin-bottom: 2px;
+		padding-right: 0;
+	}
+
+	.appCardPrice {
+		font-size: 1.3rem;
+		margin-bottom: 4px;
+		min-height: 0;
+	}
+
+	.appCardDesc {
+		font-size: 1.35rem;
+		line-height: 1.45;
+		-webkit-line-clamp: 2;
+	}
+
+	.appCardLink {
+		flex-shrink: 0;
+		align-self: center;
+		margin-top: 0;
+		font-size: 0;
+		line-height: 1;
+		color: rgba($accent-color, 0.45);
+
+		&::after {
+			content: "›";
+			font-size: 2.6rem;
+			font-weight: 400;
+		}
+	}
+
+	.portfolioAppsContainer footer .footerText {
+		padding-top: 32px;
+		padding-bottom: 36px;
+	}
+
+	.appHero.imageWrapper {
+		border-radius: 0 0 20px 20px;
+	}
+
+	.appPageHeader {
+		min-height: 44px;
+		padding: 6px 0 4px;
 	}
 }
 
@@ -1272,6 +1356,15 @@ footer {
 	box-shadow:
 		0 8px 12px rgba(0, 0, 0, 0.06),
 		0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+@media (hover: none) {
+	.appCard:hover {
+		transform: none;
+		box-shadow:
+			0 4px 6px rgba(0, 0, 0, 0.04),
+			0 16px 40px rgba(0, 0, 0, 0.14);
+	}
 }
 
 .appCardVisual {

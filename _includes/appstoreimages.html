@@ -152,19 +152,9 @@ $(function() {
             $appIconLarge.attr("src", appInfo.artworkUrl512);
         }
 
-        var $appIconHeader = $(".headerIcon");
-        if (!$appIconHeader.attr('src') || $appIconHeader.attr('src').indexOf('appicon') !== -1) {
-            $appIconHeader.attr("src", appInfo.artworkUrl512);
-        }
-
         var $appName = $(".appName");
         if ($.trim($($appName).text()).length == 0) {
             $appName.html(appInfo.trackName);
-        }
-
-        var $headerName = $(".headerName");
-        if ($.trim($($headerName).text()).length == 0) {
-            $headerName.html(appInfo.trackName);
         }
 
         var $appPrice = $(".appPrice");
