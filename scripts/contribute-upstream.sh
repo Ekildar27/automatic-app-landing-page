@@ -105,6 +105,8 @@ markdown: kramdown
 YAML
 
 rm -f _apps/*.md
+git rm -f SETUP.md 2>/dev/null || true
+
 cat > _apps/example-app.md <<'MD'
 ---
 title: Example App
