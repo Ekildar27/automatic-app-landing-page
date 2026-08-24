@@ -18,7 +18,7 @@ cd app-landing-page
 jekyll build
 
 # 本地预览（浏览器打开 http://127.0.0.1:4000）
-jekyll serve --host 127.0.0.1 --port 4000
+jekyll serve --config _config.yml,_config_dev.yml --host 127.0.0.1 --port 4000
 ```
 
 ## 添加新 App
@@ -78,4 +78,22 @@ whats_new:
 
 ## 部署到 GitHub Pages
 
-后续部署时，可将 `Gemfile` 改回 `gem 'github-pages'` 以匹配 GitHub Pages 环境，或直接使用 GitHub Actions 构建。
+站点通过 GitHub Actions 自动部署。`_config.yml` 中已配置：
+
+```yaml
+url: "https://ekildar27.github.io"
+baseurl: "/automatic-app-landing-page"
+```
+
+这保证在 `https://ekildar27.github.io/automatic-app-landing-page/` 下 CSS 和页面跳转正常。
+
+**注意：** 若在 GitHub Pages 设置里绑定了自定义域名但 DNS 尚未生效，不要改 `baseurl` 为空，否则 github.io 地址会排版错乱、链接 404。
+
+自定义域名 `ekildar.kfds.fr` DNS 生效后，再改 `_config.yml`：
+
+```yaml
+url: "https://ekildar.kfds.fr"
+baseurl: ""
+```
+
+然后 push，并在 GitHub Pages 设置里勾选 Enforce HTTPS。

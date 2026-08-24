@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<base target="_blank">
+	<base href="{{ '/' | absolute_url }}">
 
 	{% if page.ios_app_id %}
 		<title class="pageTitle">{{ page.app_name | default: page.title }}</title>

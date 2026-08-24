@@ -13,7 +13,7 @@ window.localScreenshotUrls = [
 {% for file in site.static_files %}
     {% if file.path contains screenshot_path %}
         {% if file.extname == ".png" or file.extname == ".jpg" or file.extname == ".jpeg" or file.extname == ".webp" %}
-    "{{ site.github.baseurl }}{{ file.path }}",
+    "{{ file.path | relative_url }}",
         {% endif %}
     {% endif %}
 {% endfor %}
@@ -38,7 +38,7 @@ if (window.localScreenshotUrls.length) {
                     $(".videoContainer").removeClass("hidden");
                     $(".screenshotControls").addClass("hidden");
                     $("#screenshotMeta").addClass("hidden");
-                    $(".screenvideo").append('<source src="{{ site.github.baseurl }}{{ file.path }}" type="video/mp4">');
+                    $(".screenvideo").append('<source src="{{ file.path | relative_url }}" type="video/mp4">');
                 });
             </script>
         {% elsif file.extname == ".ogg" %}
@@ -49,7 +49,7 @@ if (window.localScreenshotUrls.length) {
                     $(".videoContainer").removeClass("hidden");
                     $(".screenshotControls").addClass("hidden");
                     $("#screenshotMeta").addClass("hidden");
-                    $(".screenvideo").append('<source src="{{ site.github.baseurl }}{{ file.path }}" type="video/ogg">');
+                    $(".screenvideo").append('<source src="{{ file.path | relative_url }}" type="video/ogg">');
                 });
             </script>
         {% elsif file.extname == ".webm" %}
@@ -60,7 +60,7 @@ if (window.localScreenshotUrls.length) {
                     $(".videoContainer").removeClass("hidden");
                     $(".screenshotControls").addClass("hidden");
                     $("#screenshotMeta").addClass("hidden");
-                    $(".screenvideo").append('<source src="{{ site.github.baseurl }}{{ file.path }}" type="video/webm">');
+                    $(".screenvideo").append('<source src="{{ file.path | relative_url }}" type="video/webm">');
                 });
             </script>
         {% endif %}

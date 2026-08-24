@@ -1,3 +1,10 @@
+# GitHub Pages project site URL (required for CSS/links on github.io)
+# When custom domain DNS is ready, switch to:
+#   url: "https://ekildar.kfds.fr"
+#   baseurl: ""
+url: "https://ekildar27.github.io"
+baseurl: "/automatic-app-landing-page"
+
 # Site Info (portfolio homepage)
 page_title                                : Ekildar Office Apps
 site_description                          : A collection of mobile apps crafted with care.
