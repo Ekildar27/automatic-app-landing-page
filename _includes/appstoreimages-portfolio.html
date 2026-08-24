@@ -25,6 +25,12 @@ $(function() {
             $card.find('[data-role="icon"]').attr({
                 src: appInfo.artworkUrl512,
                 alt: appInfo.trackName
+            }).one('load', function() {
+                $(this).addClass('is-loaded');
+            }).each(function() {
+                if (this.complete) {
+                    $(this).addClass('is-loaded');
+                }
             });
 
             $card.find('[data-role="name"]').text(appInfo.trackName);
