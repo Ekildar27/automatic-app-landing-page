@@ -1639,3 +1639,155 @@ footer {
 		padding-top: 28px;
 	}
 }
+
+// Per-app legal pages (privacy / terms)
+
+.legalContainer {
+	grid-template-rows: auto auto auto;
+	grid-template-areas:
+		"h h h h h h h h h h h h"
+		"c c c c c c c c c c c c"
+		"f f f f f f f f f f f f";
+}
+
+.legalPageHeader {
+	grid-area: h;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-right: 0;
+	min-height: 56px;
+	padding: 12px 0;
+}
+
+.legalBackLink {
+	color: rgba(#000, 0.72);
+
+	&:hover,
+	&:active {
+		color: #000;
+	}
+}
+
+.langToggle {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.06);
+	flex-shrink: 0;
+}
+
+.langToggleBtn {
+	border: none;
+	background: transparent;
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 1.3rem;
+	font-weight: 600;
+	line-height: 1;
+	padding: 8px 12px;
+	border-radius: 999px;
+	cursor: pointer;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.langToggleBtn.is-active {
+	background: #fff;
+	color: #000;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.legalArticle {
+	grid-area: c;
+	grid-column: 2 / 12;
+	max-width: 760px;
+	margin: 0 auto;
+	width: 100%;
+	padding-top: 12px;
+	padding-bottom: 40px;
+}
+
+.legalMeta {
+	color: $feature-text-color;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	margin-bottom: 24px;
+}
+
+.legalPanel h1 {
+	font-size: 3rem;
+	line-height: 1.25;
+	margin-bottom: 16px;
+	color: $feature-title-color;
+}
+
+.legalPanel h2 {
+	font-size: 2.2rem;
+	margin-top: 32px;
+	margin-bottom: 12px;
+	color: $feature-title-color;
+}
+
+.legalPanel h3 {
+	font-size: 1.8rem;
+	margin-top: 20px;
+	margin-bottom: 8px;
+	color: $feature-title-color;
+}
+
+.legalPanel p,
+.legalPanel li {
+	color: $feature-text-color;
+	font-size: 1.7rem;
+	line-height: 1.65;
+}
+
+.legalPanel p {
+	margin-bottom: 14px;
+}
+
+.legalPanel ul {
+	padding-left: 1.4em;
+	margin-bottom: 14px;
+}
+
+.legalPanel li {
+	margin-bottom: 8px;
+}
+
+.legalFooter {
+	grid-area: f;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 48px;
+}
+
+.legalFooter .footerLinks {
+	padding-bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+	.legalArticle {
+		grid-column: 1 / -1;
+		padding-top: 8px;
+	}
+
+	.legalPanel h1 {
+		font-size: 2.4rem;
+	}
+
+	.legalPanel h2 {
+		font-size: 1.9rem;
+	}
+
+	.legalPanel p,
+	.legalPanel li {
+		font-size: 1.55rem;
+	}
+
+	.langToggleBtn {
+		font-size: 1.2rem;
+		padding: 7px 10px;
+	}
+}

@@ -11,6 +11,10 @@
 		{% if site.enable_smart_app_banner %}
 			<meta name="apple-itunes-app" content="app-id={{ page.ios_app_id }}">
 		{% endif %}
+	{% elsif page.collection == 'legal' %}
+		<title class="pageTitle">{{ page.title }} — {{ page.app_name }}</title>
+		<meta name="description" content="{{ page.title }} for {{ page.app_name }}">
+		<link rel="shortcut icon" href="{{ site.app_icon | relative_url }}">
 	{% else %}
 		<title class="pageTitle">{{ site.page_title }}</title>
 		<meta name="description" content="{{ site.site_description }}">

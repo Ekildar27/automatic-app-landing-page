@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class="subPageBody legalPageBody">
+    <div class="headerBackground subPageHeaderBackground legalHeaderBackground">
+        <div class="container subPageContainer legalContainer">
+            <header class="appPageHeader legalPageHeader">
+                <a class="appBackLink legalBackLink" href="{{ '/apps/' | append: page.app_slug | append: '/' | relative_url }}" target="_self">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    <span>{{ page.app_name }}</span>
+                </a>
+                <div class="langToggle" role="group" aria-label="Language">
+                    <button type="button" class="langToggleBtn is-active" data-lang="en" aria-pressed="true">EN</button>
+                    <button type="button" class="langToggleBtn" data-lang="zh" aria-pressed="false">中文</button>
+                </div>
+            </header>
+
+            <article class="page markdown-body legalArticle" id="legalArticle">
+                {% if page.doc_type == 'privacy' %}
+                    {% include legal-privacy-placeholder.html app_name=page.app_name %}
+                {% elsif page.doc_type == 'terms' %}
+                    {% include legal-terms-placeholder.html app_name=page.app_name %}
+                {% else %}
+                    {{ content }}
+                {% endif %}
+            </article>
+
+            <footer class="legalFooter">
+                <div class="footerLinks">
+                    <a href="{{ '/apps/' | append: page.app_slug | append: '/' | relative_url }}" target="_self">{{ page.app_name }}</a>
+                    {% if page.doc_type == 'privacy' %}
+                        <a href="{{ '/apps/' | append: page.app_slug | append: '/terms/' | relative_url }}" target="_self">
+                            <span class="langLabel" data-lang="en">Terms of Use</span>
+                            <span class="langLabel" data-lang="zh" hidden>使用条款</span>
+                        </a>
+                    {% else %}
+                        <a href="{{ '/apps/' | append: page.app_slug | append: '/privacy/' | relative_url }}" target="_self">
+                            <span class="langLabel" data-lang="en">Privacy Policy</span>
+                            <span class="langLabel" data-lang="zh" hidden>隐私政策</span>
+                        </a>
+                    {% endif %}
+                    <a href="{{ '/changelog/' | relative_url }}" target="_self">What's New</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var STORAGE_KEY = 'ekildar-legal-lang';
+        var root = document.getElementById('legalArticle');
+        var buttons = document.querySelectorAll('.langToggleBtn');
+        var panels = document.querySelectorAll('.legalPanel');
+        var labels = document.querySelectorAll('.langLabel');
+
+        function applyLang(lang) {
+            if (lang !== 'en' && lang !== 'zh') lang = 'en';
+            document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
+
+            panels.forEach(function(panel) {
+                var on = panel.getAttribute('data-lang') === lang;
+                panel.hidden = !on;
+            });
+
+            labels.forEach(function(label) {
+                var on = label.getAttribute('data-lang') === lang;
+                label.hidden = !on;
+            });
+
+            buttons.forEach(function(btn) {
+                var on = btn.getAttribute('data-lang') === lang;
+                btn.classList.toggle('is-active', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+
+            try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+        }
+
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                applyLang(btn.getAttribute('data-lang'));
+            });
+        });
+
+        var saved = null;
+        try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+        applyLang(saved || 'en');
+    })();
+    </script>
+</body>
+</html>

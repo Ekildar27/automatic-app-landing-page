@@ -72,6 +72,24 @@ whats_new:
 | `animal-zoom.md` | 6449437829 | `/apps/animal-zoom/` |
 | `animal-zoom-pro.md` | 6746965982 | `/apps/animal-zoom-pro/` |
 
+## 每 App 隐私政策 / 使用条款
+
+每个 App 有独立法律页（含 **EN / 中文** 切换，选择会记在浏览器本地）：
+
+| App | Privacy | Terms |
+|-----|---------|-------|
+| Nexus Note | `/apps/nexus-note/privacy/` | `/apps/nexus-note/terms/` |
+| Moments with Mom | `/apps/moments-with-mom/privacy/` | `/apps/moments-with-mom/terms/` |
+| Animal Zoom | `/apps/animal-zoom/privacy/` | `/apps/animal-zoom/terms/` |
+| Animal Zoom Pro | `/apps/animal-zoom-pro/privacy/` | `/apps/animal-zoom-pro/terms/` |
+
+文件在 `_legal/<app-slug>/privacy.md` 与 `terms.md`。正文来自占位模板：
+
+- `_includes/legal-privacy-placeholder.html`
+- `_includes/legal-terms-placeholder.html`
+
+上架前请把占位文案换成正式法律文本。App 详情页页脚会显示对应链接。
+
 ## 全站配置
 
 编辑 `_config.yml` 修改站点标题、主题颜色、页脚社交链接等。
