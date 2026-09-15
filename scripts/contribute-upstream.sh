@@ -100,12 +100,17 @@ collections:
   apps:
     output: true
     permalink: /apps/:name/
+  legal:
+    output: true
+    permalink: /apps/:path/
 
 markdown: kramdown
 YAML
 
 rm -f _apps/*.md
+rm -rf _legal
 git rm -f SETUP.md 2>/dev/null || true
+git rm -rf _legal 2>/dev/null || true
 
 cat > _apps/example-app.md <<'MD'
 ---
@@ -125,6 +130,29 @@ features:
   - title: App Store Screenshots
     description: iPhone screenshots load automatically with carousel controls.
     fontawesome_icon_name: images
+---
+MD
+
+mkdir -p _legal/example-app
+cat > _legal/example-app/privacy.md <<'MD'
+---
+layout: legal
+title: Privacy Policy
+title_zh: 隐私政策
+app_slug: example-app
+app_name: Example App
+doc_type: privacy
+---
+MD
+
+cat > _legal/example-app/terms.md <<'MD'
+---
+layout: legal
+title: Terms of Use
+title_zh: 使用条款
+app_slug: example-app
+app_name: Example App
+doc_type: terms
 ---
 MD
 
@@ -154,6 +182,24 @@ features:
 
 Optional: `ios_app_country: cn` for region-specific App Store lookup.
 
+## Per-app Privacy Policy & Terms of Use
+
+Create `_legal/my-app/privacy.md` and `_legal/my-app/terms.md`:
+
+```yaml
+---
+layout: legal
+title: Privacy Policy
+title_zh: 隐私政策
+app_slug: my-app
+app_name: My App
+doc_type: privacy
+---
+```
+
+Pages are published at `/apps/my-app/privacy/` and `/apps/my-app/terms/` with an EN / 中文 toggle.
+Replace the placeholder copy in `_includes/legal-privacy-placeholder.html` and `_includes/legal-terms-placeholder.html`.
+
 ## Local preview
 
 ```bash
@@ -177,6 +223,7 @@ git add -A
 git commit -m "Add multi-app portfolio landing page support" \
   -m "- Portfolio homepage with app cards (iTunes icon, name, price)" \
   -m "- Per-app detail pages under /apps/:name/" \
+  -m "- Per-app Privacy Policy and Terms of Use with EN/中文 toggle" \
   -m "- App Store iPhone screenshots with carousel" \
   -m "- What's New hub and per-app release notes" \
   -m "- GitHub Pages baseurl-safe asset paths" \
