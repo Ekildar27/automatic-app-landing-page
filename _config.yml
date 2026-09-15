@@ -5,7 +5,7 @@ baseurl: ""
 
 # Site Info (portfolio homepage)
 page_title                                : Ekildar Office Apps
-page_title_zh                             : Ekildar 办公应用
+page_title_zh                             : Ekildar开发小组的app
 site_description                          : A collection of mobile apps crafted with care.
 site_description_zh                       : 用心打造的移动应用合集。
 ios_app_country                           : us
