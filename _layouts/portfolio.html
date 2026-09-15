@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 
 {% include head.html %}
 
@@ -11,8 +11,14 @@
                     {% include header-portfolio.html %}
 
                     <div class="portfolioIntro">
-                        <h1 class="portfolioTitle">{{ site.page_title }}</h1>
-                        <p class="portfolioSubtitle">{{ site.site_description }}</p>
+                        <h1 class="portfolioTitle">
+                            <span class="langLabel" data-lang="en">{{ site.page_title }}</span>
+                            <span class="langLabel" data-lang="zh" hidden>{{ site.page_title_zh | default: site.page_title }}</span>
+                        </h1>
+                        <p class="portfolioSubtitle">
+                            <span class="langLabel" data-lang="en">{{ site.site_description }}</span>
+                            <span class="langLabel" data-lang="zh" hidden>{{ site.site_description_zh | default: site.site_description }}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -22,6 +28,8 @@
             <div class="container portfolioAppsContainer">
                 <div class="appGrid" id="appGrid">
                     {% for app in site.apps %}
+                    {% assign desc_en = app.app_description_en | default: app.app_description %}
+                    {% assign desc_zh = app.app_description_zh | default: app.app_description %}
                     <a class="appCard" href="{{ app.url | relative_url }}" data-app-id="{{ app.ios_app_id }}" data-app-country="{{ app.ios_app_country | default: site.ios_app_country }}" target="_self">
                         <div class="appCardVisual">
                             <div class="appCardIconFrame">
@@ -31,9 +39,15 @@
                         <div class="appCardBody">
                             <h2 class="appCardName" data-role="name">{{ app.app_name | default: app.title }}</h2>
                             <p class="appCardPrice" data-role="price">{% if app.app_price %}{{ app.app_price }}{% endif %}</p>
-                            <p class="appCardDesc">{{ app.app_description }}</p>
+                            <p class="appCardDesc">
+                                <span class="langLabel" data-lang="en">{{ desc_en }}</span>
+                                <span class="langLabel" data-lang="zh" hidden>{{ desc_zh }}</span>
+                            </p>
                         </div>
-                        <span class="appCardLink" aria-hidden="true">View details →</span>
+                        <span class="appCardLink" aria-hidden="true">
+                            <span class="langLabel appCardLinkText" data-lang="en">View details →</span>
+                            <span class="langLabel appCardLinkText" data-lang="zh" hidden>查看详情 →</span>
+                        </span>
                     </a>
                     {% endfor %}
                 </div>
@@ -44,5 +58,7 @@
 
         {% include appstoreimages-portfolio.html %}
     </div>
+
+    {% include lang-switch.html %}
 </body>
 </html>

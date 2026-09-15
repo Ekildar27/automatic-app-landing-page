@@ -274,13 +274,16 @@ header {
 		padding-bottom: 4px;
 	}
 
-	.portfolioHeroContainer header {
-		flex-direction: column;
+	.portfolioHeroContainer header,
+	.portfolioHeaderBar {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	.portfolioNav.scroll {
-		width: 100%;
-		justify-content: center;
+		width: auto;
+		justify-content: flex-start;
 	}
 
 } 
@@ -1123,7 +1126,8 @@ footer {
 		"f f f f f f f f f f f f";
 }
 
-.portfolioHeroContainer header {
+.portfolioHeroContainer header,
+.portfolioHeaderBar {
 	justify-content: flex-end;
 	height: auto;
 	min-height: 96px;
@@ -1132,9 +1136,19 @@ footer {
 	align-items: center;
 }
 
+.portfolioHeaderBar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	width: 100%;
+	margin-right: 0;
+}
+
 .portfolioNav {
 	height: auto;
 	justify-content: flex-end;
+	flex: 1 1 auto;
+	min-width: 0;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1146,10 +1160,18 @@ footer {
 		}
 	}
 
-	.portfolioHeroContainer header {
+	.portfolioHeroContainer header,
+	.portfolioHeaderBar {
 		min-height: 0;
 		padding-top: 8px;
 		padding-bottom: 4px;
+	}
+
+	.portfolioHeaderBar {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
 	}
 
 	.portfolioNav.scroll {
@@ -1157,7 +1179,9 @@ footer {
 		padding-top: 0;
 		padding-bottom: 0;
 		margin-top: 0;
-		justify-content: center;
+		justify-content: flex-start;
+		width: auto;
+		flex: 1 1 auto;
 	}
 
 	.portfolioIntro {
@@ -1696,6 +1720,20 @@ footer {
 	background: #fff;
 	color: #000;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.langToggle--onDark {
+	background: rgba(255, 255, 255, 0.14);
+}
+
+.langToggle--onDark .langToggleBtn {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.langToggle--onDark .langToggleBtn.is-active {
+	background: rgba(255, 255, 255, 0.95);
+	color: #111;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .legalArticle {

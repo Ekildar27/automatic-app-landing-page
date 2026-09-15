@@ -4,6 +4,7 @@ layout: app
 app_name: Nexus Note
 ios_app_id: 6797005454
 app_description: Your private second brain — capture ideas, links, photos, and voice notes effortlessly.
+app_description_zh: 你的私密第二大脑——轻松记录想法、链接、照片与语音笔记。
 device_color: black
 features:
   - title: Capture effortlessly

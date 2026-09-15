@@ -79,17 +79,37 @@
 	</div>
 	<div class="footerLinks">
 		{% if page.collection == 'apps' %}
-			<a href="{{ '/apps/' | append: page.slug | append: '/privacy/' | relative_url }}" target="_self">Privacy Policy</a>
-			<a href="{{ '/apps/' | append: page.slug | append: '/terms/' | relative_url }}" target="_self">Terms of Use</a>
+			<a href="{{ '/apps/' | append: page.slug | append: '/privacy/' | relative_url }}" target="_self">
+				<span class="langLabel" data-lang="en">Privacy Policy</span>
+				<span class="langLabel" data-lang="zh" hidden>隐私政策</span>
+			</a>
+			<a href="{{ '/apps/' | append: page.slug | append: '/terms/' | relative_url }}" target="_self">
+				<span class="langLabel" data-lang="en">Terms of Use</span>
+				<span class="langLabel" data-lang="zh" hidden>使用条款</span>
+			</a>
 			{% for p in site.pages %}
 				{% if p.include_in_header == true %}
-				<a href="{{ p.url | relative_url }}" target="_self">{{ p.title }}</a>
+				<a href="{{ p.url | relative_url }}" target="_self">
+					{% if p.title == "What's New" %}
+						<span class="langLabel" data-lang="en">What's New</span>
+						<span class="langLabel" data-lang="zh" hidden>更新日志</span>
+					{% else %}
+						{{ p.title }}
+					{% endif %}
+				</a>
 				{% endif %}
 			{% endfor %}
 		{% else %}
 			{% for p in site.pages %}
 				{% unless p.url contains 'privacypolicy' %}
-				<a href="{{ p.url | relative_url }}" target="_self">{{ p.title }}</a>
+				<a href="{{ p.url | relative_url }}" target="_self">
+					{% if p.title == "What's New" %}
+						<span class="langLabel" data-lang="en">What's New</span>
+						<span class="langLabel" data-lang="zh" hidden>更新日志</span>
+					{% else %}
+						{{ p.title }}
+					{% endif %}
+				</a>
 				{% endunless %}
 			{% endfor %}
 		{% endif %}

@@ -4,7 +4,8 @@ layout: app
 app_name: Animal Zoom
 ios_app_id: 6449437829
 ios_app_country: cn
-app_description: 专为 1 岁以上宝宝设计的动物叫声应用，27 种真实动物录音。
+app_description: An animal sounds app for toddlers 1+, with 27 real animal recordings.
+app_description_zh: 专为 1 岁以上宝宝设计的动物叫声应用，27 种真实动物录音。
 device_color: yellow
 features:
   - title: 27 种动物

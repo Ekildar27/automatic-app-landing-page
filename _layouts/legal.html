@@ -11,10 +11,7 @@
                     <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     <span>{{ page.app_name }}</span>
                 </a>
-                <div class="langToggle" role="group" aria-label="Language">
-                    <button type="button" class="langToggleBtn is-active" data-lang="en" aria-pressed="true">EN</button>
-                    <button type="button" class="langToggleBtn" data-lang="zh" aria-pressed="false">中文</button>
-                </div>
+                {% include lang-toggle.html %}
             </header>
 
             <article class="page markdown-body legalArticle" id="legalArticle">
@@ -41,53 +38,15 @@
                             <span class="langLabel" data-lang="zh" hidden>隐私政策</span>
                         </a>
                     {% endif %}
-                    <a href="{{ '/changelog/' | relative_url }}" target="_self">What's New</a>
+                    <a href="{{ '/changelog/' | relative_url }}" target="_self">
+                        <span class="langLabel" data-lang="en">What's New</span>
+                        <span class="langLabel" data-lang="zh" hidden>更新日志</span>
+                    </a>
                 </div>
             </footer>
         </div>
     </div>
 
-    <script>
-    (function() {
-        var STORAGE_KEY = 'ekildar-legal-lang';
-        var root = document.getElementById('legalArticle');
-        var buttons = document.querySelectorAll('.langToggleBtn');
-        var panels = document.querySelectorAll('.legalPanel');
-        var labels = document.querySelectorAll('.langLabel');
-
-        function applyLang(lang) {
-            if (lang !== 'en' && lang !== 'zh') lang = 'en';
-            document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
-
-            panels.forEach(function(panel) {
-                var on = panel.getAttribute('data-lang') === lang;
-                panel.hidden = !on;
-            });
-
-            labels.forEach(function(label) {
-                var on = label.getAttribute('data-lang') === lang;
-                label.hidden = !on;
-            });
-
-            buttons.forEach(function(btn) {
-                var on = btn.getAttribute('data-lang') === lang;
-                btn.classList.toggle('is-active', on);
-                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-            });
-
-            try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
-        }
-
-        buttons.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                applyLang(btn.getAttribute('data-lang'));
-            });
-        });
-
-        var saved = null;
-        try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-        applyLang(saved || 'en');
-    })();
-    </script>
+    {% include lang-switch.html %}
 </body>
 </html>

@@ -3,7 +3,8 @@ title: Animal Zoom Pro
 layout: app
 app_name: Animal Zoom Pro
 ios_app_id: 6746965982
-app_description: 专为儿童设计的互动式动物学习应用，50+ 种动物等你探索。
+app_description: An interactive animal learning app for kids, with 50+ animals to explore.
+app_description_zh: 专为儿童设计的互动式动物学习应用，50+ 种动物等你探索。
 device_color: blue
 features:
   - title: 丰富动物库

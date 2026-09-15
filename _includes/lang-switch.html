@@ -1,0 +1,39 @@
+<script>
+(function() {
+	var STORAGE_KEY = 'ekildar-site-lang';
+	var LEGACY_KEY = 'ekildar-legal-lang';
+
+	function applyLang(lang) {
+		if (lang !== 'en' && lang !== 'zh') lang = 'en';
+		document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : 'en';
+		document.documentElement.setAttribute('data-site-lang', lang);
+
+		document.querySelectorAll('.legalPanel, .langLabel').forEach(function(el) {
+			var on = el.getAttribute('data-lang') === lang;
+			el.hidden = !on;
+		});
+
+		document.querySelectorAll('.langToggleBtn').forEach(function(btn) {
+			var on = btn.getAttribute('data-lang') === lang;
+			btn.classList.toggle('is-active', on);
+			btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+		});
+
+		try {
+			localStorage.setItem(STORAGE_KEY, lang);
+		} catch (e) {}
+	}
+
+	document.querySelectorAll('.langToggleBtn').forEach(function(btn) {
+		btn.addEventListener('click', function() {
+			applyLang(btn.getAttribute('data-lang'));
+		});
+	});
+
+	var saved = null;
+	try {
+		saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY);
+	} catch (e) {}
+	applyLang(saved || 'en');
+})();
+</script>

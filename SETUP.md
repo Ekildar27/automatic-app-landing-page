@@ -90,6 +90,15 @@ whats_new:
 
 上架前请把占位文案换成正式法律文本。App 详情页页脚会显示对应链接。
 
+## 中英文切换
+
+首页与法律页右上角有 **EN / 中文** 切换，默认英文；选择会记在浏览器本地，各页共用。
+
+可配置字段：
+
+- `_config.yml`：`page_title_zh`、`site_description_zh`
+- `_apps/*.md`：`app_description`（英文）+ `app_description_zh`（中文）
+
 ## 全站配置
 
 编辑 `_config.yml` 修改站点标题、主题颜色、页脚社交链接等。
