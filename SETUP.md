@@ -93,9 +93,9 @@ whats_new:
 
 当前正式文案：
 
-| App | 隐私政策正文 |
-|-----|--------------|
-| Nexus Note | `_includes/legal-nexus-note-privacy.html`（由 `_legal/nexus-note/privacy.md` 引入） |
+| App | 隐私政策正文 | 使用条款正文 |
+|-----|--------------|--------------|
+| Nexus Note | `_includes/legal-nexus-note-privacy.html` | `_includes/legal-nexus-note-terms.html` |
 
 上架前请把其余 App 的占位文案换成正式法律文本。App 详情页页脚会显示对应链接。
 

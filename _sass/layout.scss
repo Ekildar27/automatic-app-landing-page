@@ -1856,6 +1856,14 @@ footer {
 	font-weight: 600;
 }
 
+.legalCopyright {
+	margin-top: 28px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	font-size: 1.5rem;
+	color: $feature-text-color;
+}
+
 .legalFooter {
 	grid-area: f;
 	display: flex;
