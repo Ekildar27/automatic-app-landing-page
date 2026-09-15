@@ -2,6 +2,9 @@
 
 基于 [automatic-app-landing-page](https://github.com/emilbaehr/automatic-app-landing-page) 改造，支持在首页展示多个 App，每个 App 有独立详情页。
 
+> **日常维护请看完整指南：** [操作指南.md](./操作指南.md)  
+> 涵盖：加/改 App、隐私与条款、What's New、中英文、截图、部署、上游 PR。
+
 ## 本地运行
 
 需要 Ruby 3.x（推荐 Homebrew 安装的 Ruby）。
