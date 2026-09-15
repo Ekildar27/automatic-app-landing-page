@@ -50,6 +50,7 @@
 }
 
 .appHeroContainer {
+	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: 115px auto;
 	grid-template-areas:
 		"h h h h h h h h h h h h"
@@ -59,13 +60,28 @@
 @media only screen and (max-width: 992px) {
 	.appHeroContainer {
 		grid-column-gap: 0;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: auto auto auto;
-		row-gap: 12px;
+		row-gap: 16px;
 		grid-template-areas:
-			"h h h h h h h h h h h h"
-			"p p p p p p p p p p p p"
-			"i i i i i i i i i i i i";
+			"h"
+			"p"
+			"i";
+		justify-items: stretch;
+	}
+
+	.iphonePreviewBlock,
+	.appInfo {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	.iphonePreviewBlock {
+		justify-self: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
 
@@ -126,35 +142,33 @@
 
 @media only screen and (max-width: 992px) {
 
-	// Only reorder app detail hero — never override portfolio grid areas (t/g)
-	.appHeroContainer {
-		grid-column-gap: 0;
-		grid-template-columns: 1fr;
-	}
-
+	// Keep portfolio / body grids on one column without breaking app hero areas
 	.portfolioHeroContainer,
 	.portfolioAppsContainer {
 		grid-column-gap: 0;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 	}
 
 	.portfolioHeroContainer {
 		grid-template-rows: auto auto;
 		grid-template-areas:
-			"h h h h h h h h h h h h"
-			"t t t t t t t t t t t t";
+			"h"
+			"t";
 	}
 
 	.portfolioAppsContainer {
 		grid-template-rows: auto auto;
 		grid-template-areas:
-			"g g g g g g g g g g g g"
-			"f f f f f f f f f f f f";
+			"g"
+			"f";
 	}
 
 	.appBodyContainer {
 		grid-column-gap: 0;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+			"c"
+			"f";
 	}
 }
 
@@ -619,17 +633,18 @@ nav > ul li a:active {
 @media only screen and (max-width: 992px) {
 
 	.iphonePreviewBlock {
-		margin-top: 32px;
-		padding-bottom: 16px;
+		margin-top: 20px;
+		margin-bottom: 8px;
+		padding-bottom: 12px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		--frame-w: 260px;
-		--screen-x: 17px;
-		--screen-y: 17px;
-		--screen-w: 226px;
-		--screen-h: 488px;
-		--screen-radius: 22px;
+		--frame-w: min(280px, calc(100vw - 56px));
+		--screen-x: calc(var(--frame-w) * 26 / 400);
+		--screen-y: calc(var(--frame-w) * 23 / 400);
+		--screen-w: calc(var(--frame-w) * 349 / 400);
+		--screen-h: calc(var(--frame-w) * 755 / 400);
+		--screen-radius: calc(var(--frame-w) * 34 / 400);
 	}
 
 }
@@ -637,13 +652,8 @@ nav > ul li a:active {
 @media only screen and (max-width: 480px) {
 
 	.iphonePreviewBlock {
-		margin-top: 24px;
+		margin-top: 16px;
 		--frame-w: min(240px, calc(100vw - 48px));
-		--screen-x: 16px;
-		--screen-y: 16px;
-		--screen-w: calc(var(--frame-w) - 34px);
-		--screen-h: calc(var(--frame-w) * 488 / 260);
-		--screen-radius: 20px;
 	}
 
 	.appIconLarge {
@@ -1027,7 +1037,15 @@ footer {
 	.screenshotMeta {
 		margin-left: 0;
 		width: var(--screen-w);
+		max-width: 100%;
 		margin-top: 10px;
+		align-self: center;
+	}
+
+	.screenshotControls {
+		left: var(--screen-x);
+		width: var(--screen-w);
+		max-width: 100%;
 	}
 
 	.screenshotBtn {
