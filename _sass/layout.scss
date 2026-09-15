@@ -49,42 +49,6 @@
 		"f f f f f f f f f f f f";
 }
 
-.appHeroContainer {
-	grid-template-columns: repeat(12, 1fr);
-	grid-template-rows: 115px auto;
-	grid-template-areas:
-		"h h h h h h h h h h h h"
-		"p p p p p i i i i i i i";
-}
-
-@media only screen and (max-width: 992px) {
-	.appHeroContainer {
-		grid-column-gap: 0;
-		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: auto auto auto;
-		row-gap: 16px;
-		grid-template-areas:
-			"h"
-			"p"
-			"i";
-		justify-items: stretch;
-	}
-
-	.iphonePreviewBlock,
-	.appInfo {
-		width: 100%;
-		max-width: 100%;
-		min-width: 0;
-	}
-
-	.iphonePreviewBlock {
-		justify-self: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-}
-
 @media only screen and (max-width: 768px) {
 
 	.headerBackground {
@@ -124,17 +88,74 @@
 	background-color: #fff;
 }
 
-@media only screen and (max-width: 768px) {
+// App detail hero — MUST come after .container (same class specificity otherwise loses)
+.container.appHeroContainer {
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: auto auto;
+	grid-template-areas:
+		"h h h h h h h h h h h h"
+		"p p p p p i i i i i i i";
+	align-items: start;
+}
 
-	.container:not(.portfolioHeroContainer):not(.portfolioAppsContainer):not(.appBodyContainer) {
-		grid-template-rows: auto auto auto auto;
+@media only screen and (max-width: 992px) {
+	// Flex column beats grid area conflicts on phones
+	.container.appHeroContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: flex-start;
+		gap: 16px;
+		grid-template-columns: none;
+		grid-template-rows: none;
+		grid-template-areas: none;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
 
-	.appBodyContainer,
-	.portfolioHeroContainer,
-	.portfolioAppsContainer {
+	.container.appHeroContainer > header,
+	.container.appHeroContainer > .iphonePreviewBlock,
+	.container.appHeroContainer > .appInfo {
+		width: 100%;
+		max-width: 100%;
+		min-width: 0;
+		flex: 0 0 auto;
+	}
+
+	.container.appHeroContainer > .iphonePreviewBlock {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		order: 2;
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+
+	.container.appHeroContainer > header {
+		order: 1;
+	}
+
+	.container.appHeroContainer > .appInfo {
+		order: 3;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+
+	.container.portfolioHeroContainer,
+	.container.portfolioAppsContainer,
+	.container.appBodyContainer,
+	.container.appHeroContainer {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.container.subPageContainer {
+		grid-template-rows: auto auto auto auto;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -142,33 +163,37 @@
 
 @media only screen and (max-width: 992px) {
 
-	// Keep portfolio / body grids on one column without breaking app hero areas
-	.portfolioHeroContainer,
-	.portfolioAppsContainer {
+	.container.portfolioHeroContainer,
+	.container.portfolioAppsContainer {
 		grid-column-gap: 0;
 		grid-template-columns: minmax(0, 1fr);
 	}
 
-	.portfolioHeroContainer {
+	.container.portfolioHeroContainer {
 		grid-template-rows: auto auto;
 		grid-template-areas:
 			"h"
 			"t";
 	}
 
-	.portfolioAppsContainer {
+	.container.portfolioAppsContainer {
 		grid-template-rows: auto auto;
 		grid-template-areas:
 			"g"
 			"f";
 	}
 
-	.appBodyContainer {
-		grid-column-gap: 0;
-		grid-template-columns: minmax(0, 1fr);
-		grid-template-areas:
-			"c"
-			"f";
+	.container.appBodyContainer {
+		display: flex;
+		flex-direction: column;
+		grid-template-columns: none;
+		grid-template-areas: none;
+		gap: 0;
+	}
+
+	.container.appBodyContainer > .appDetailsColumn,
+	.container.appBodyContainer > footer {
+		width: 100%;
 	}
 }
 
@@ -474,10 +499,6 @@ nav > ul li a:active {
 		padding-top: 20px;
 		padding-bottom: 28px;
 		gap: 16px;
-	}
-
-	.appHeroContainer {
-		grid-template-rows: auto auto auto;
 	}
 
 } 
