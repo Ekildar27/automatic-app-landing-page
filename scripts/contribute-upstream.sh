@@ -31,7 +31,9 @@ fi
 cat > _config.yml <<'YAML'
 # Site Info (portfolio homepage)
 page_title                                : My Apps
+page_title_zh                             : 我的应用
 site_description                          : A collection of mobile apps. Add yours in _apps/.
+site_description_zh                       : 在 _apps/ 中添加你的应用合集。
 ios_app_country                           : us
 
 # GitHub Pages project site (user.github.io/repo-name) — uncomment and set yours:
@@ -119,6 +121,7 @@ layout: app
 app_name: Example App
 ios_app_id: 1234793120
 app_description: Example app. Replace with your App Store ID in _apps/your-app.md.
+app_description_zh: 示例应用。请在 _apps/your-app.md 中替换为你的 App Store ID。
 device_color: black
 features:
   - title: Automatic Metadata
@@ -181,6 +184,7 @@ features:
 ```
 
 Optional: `ios_app_country: cn` for region-specific App Store lookup.
+Optional: `app_description_zh` for homepage Chinese copy (EN/中文 toggle).
 
 ## Per-app Privacy Policy & Terms of Use
 
@@ -224,6 +228,8 @@ git commit -m "Add multi-app portfolio landing page support" \
   -m "- Portfolio homepage with app cards (iTunes icon, name, price)" \
   -m "- Per-app detail pages under /apps/:name/" \
   -m "- Per-app Privacy Policy and Terms of Use with EN/中文 toggle" \
+  -m "- Homepage EN/中文 language switch" \
+  -m "- Mobile single-column app detail layout fix" \
   -m "- App Store iPhone screenshots with carousel" \
   -m "- What's New hub and per-app release notes" \
   -m "- GitHub Pages baseurl-safe asset paths" \
