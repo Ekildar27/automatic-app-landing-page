@@ -86,12 +86,18 @@ whats_new:
 | Animal Zoom | `/apps/animal-zoom/privacy/` | `/apps/animal-zoom/terms/` |
 | Animal Zoom Pro | `/apps/animal-zoom-pro/privacy/` | `/apps/animal-zoom-pro/terms/` |
 
-文件在 `_legal/<app-slug>/privacy.md` 与 `terms.md`。正文来自占位模板：
+文件在 `_legal/<app-slug>/privacy.md` 与 `terms.md`。
 
-- `_includes/legal-privacy-placeholder.html`
-- `_includes/legal-terms-placeholder.html`
+- 若该文件正文为空 → 使用通用占位模板（`_includes/legal-*-placeholder.html`）
+- 若正文有内容（或 `{% include ... %}`）→ **优先显示该 App 自己的正文**
 
-上架前请把占位文案换成正式法律文本。App 详情页页脚会显示对应链接。
+当前正式文案：
+
+| App | 隐私政策正文 |
+|-----|--------------|
+| Nexus Note | `_includes/legal-nexus-note-privacy.html`（由 `_legal/nexus-note/privacy.md` 引入） |
+
+上架前请把其余 App 的占位文案换成正式法律文本。App 详情页页脚会显示对应链接。
 
 ## 中英文切换
 

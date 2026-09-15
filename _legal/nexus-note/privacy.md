@@ -6,3 +6,5 @@ app_slug: nexus-note
 app_name: Nexus Note
 doc_type: privacy
 ---
+
+{% include legal-nexus-note-privacy.html %}

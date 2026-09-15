@@ -1833,6 +1833,29 @@ footer {
 	margin-bottom: 8px;
 }
 
+.legalTable {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 16px 0 20px;
+	font-size: 1.6rem;
+}
+
+.legalTable th,
+.legalTable td {
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	padding: 10px 12px;
+	text-align: left;
+	vertical-align: top;
+	color: $feature-text-color;
+	line-height: 1.5;
+}
+
+.legalTable th {
+	background: rgba(0, 0, 0, 0.04);
+	color: $feature-title-color;
+	font-weight: 600;
+}
+
 .legalFooter {
 	grid-area: f;
 	display: flex;

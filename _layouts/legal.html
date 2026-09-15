@@ -15,12 +15,13 @@
             </header>
 
             <article class="page markdown-body legalArticle" id="legalArticle">
-                {% if page.doc_type == 'privacy' %}
+                {% assign legal_body = content | strip %}
+                {% if legal_body != "" %}
+                    {{ content }}
+                {% elsif page.doc_type == 'privacy' %}
                     {% include legal-privacy-placeholder.html app_name=page.app_name %}
                 {% elsif page.doc_type == 'terms' %}
                     {% include legal-terms-placeholder.html app_name=page.app_name %}
-                {% else %}
-                    {{ content }}
                 {% endif %}
             </article>
 
