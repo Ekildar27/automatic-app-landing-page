@@ -4,7 +4,7 @@ baseurl: ""
 # Local preview with github.io paths: jekyll serve --config _config.yml,_config_dev.yml
 
 # Site Info (portfolio homepage)
-page_title                                : Ekildar Office Apps
+page_title                                : Ekildar Apps
 page_title_zh                             : Ekildar开发小组的app
 site_description                          : A collection of mobile apps crafted with care.
 site_description_zh                       : 用心打造的移动应用合集。
