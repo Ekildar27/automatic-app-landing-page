@@ -74,6 +74,7 @@ whats_new:
 | `moments-with-mom.md` | 6801768385 | `/apps/moments-with-mom/` |
 | `animal-zoom.md` | 6449437829 | `/apps/animal-zoom/` |
 | `animal-zoom-pro.md` | 6746965982 | `/apps/animal-zoom-pro/` |
+| `dino-todo.md` | 6749274604 | `/apps/dino-todo/` |
 
 ## 每 App 隐私政策 / 使用条款
 
