@@ -87,16 +87,13 @@
 				<span class="langLabel" data-lang="en">Terms of Use</span>
 				<span class="langLabel" data-lang="zh" hidden>使用条款</span>
 			</a>
+			<a href="{{ '/changelog/' | relative_url }}" target="_self">
+				<span class="langLabel" data-lang="en">What's New</span>
+				<span class="langLabel" data-lang="zh" hidden>更新日志</span>
+			</a>
 			{% for p in site.pages %}
 				{% if p.include_in_header == true %}
-				<a href="{{ p.url | relative_url }}" target="_self">
-					{% if p.title == "What's New" %}
-						<span class="langLabel" data-lang="en">What's New</span>
-						<span class="langLabel" data-lang="zh" hidden>更新日志</span>
-					{% else %}
-						{{ p.title }}
-					{% endif %}
-				</a>
+				<a href="{{ p.url | relative_url }}" target="_self">{{ p.title }}</a>
 				{% endif %}
 			{% endfor %}
 		{% else %}

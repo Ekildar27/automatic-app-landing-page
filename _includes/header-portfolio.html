@@ -3,16 +3,7 @@
 		<ul>
 			{% for page in site.pages %}
 				{% if page.include_in_header == true %}
-				<li>
-					<a href="{{ page.url | relative_url }}" target="_self">
-						{% if page.title == "What's New" %}
-							<span class="langLabel" data-lang="en">What's New</span>
-							<span class="langLabel" data-lang="zh" hidden>更新日志</span>
-						{% else %}
-							{{ page.title }}
-						{% endif %}
-					</a>
-				</li>
+				<li><a href="{{ page.url | relative_url }}" target="_self">{{ page.title }}</a></li>
 				{% endif %}
 			{% endfor %}
 			{% if site.presskit_download_link %}
