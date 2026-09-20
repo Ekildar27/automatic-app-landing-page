@@ -9,67 +9,178 @@
     <h1>Privacy Policy — NexusNote</h1>
 
     <h2>1. Who we are</h2>
-    <p>NexusNote (“the App”) is a private notes application published by Ekildar Office. This Privacy Policy explains what data is involved when you use the App and how it is handled.</p>
+    <p>Ekildar Office (“we,” “us,” or “our”) operates the NexusNote application (“the App” or “the Service”). We are committed to protecting your privacy. This Privacy Policy explains <strong>what data is involved</strong>, <strong>how it is collected</strong>, <strong>all purposes for which it is used</strong>, <strong>with whom it may be shared</strong>, and <strong>how we obtain your permission before sharing</strong>.</p>
+    <p>By using the App, you acknowledge this Privacy Policy. It should be read together with our Terms of Use.</p>
 
-    <h2>2. Summary</h2>
+    <h2>2. Core principles</h2>
     <ul>
-        <li>We do not require an account to use the App.</li>
-        <li>Your notes, attachments, tags, and related metadata are stored on your device (including the App Group container used by the Share Extension on the same device).</li>
-        <li>In the current release, we do not operate a NexusNote cloud backend that receives your notes.</li>
-        <li>We do not sell your personal data.</li>
-        <li>The current release does not include third-party advertising or analytics SDKs.</li>
-        <li>Apple may process App Store purchase, download, and crash diagnostics under Apple’s own policies when you use the App Store / Apple systems. That processing is controlled by Apple, not by Ekildar Office’s note storage.</li>
+        <li><strong>No account required.</strong> You can use the App without creating an account with us.</li>
+        <li><strong>Local-first.</strong> Notes, attachments, tags, and related metadata are stored <strong>on your device</strong> by default (including the App Group container used by the Share Extension on the same device).</li>
+        <li><strong>We do not operate a NexusNote backend that receives your note contents.</strong> Ekildar Office does not run a cloud server that stores your notes for normal use.</li>
+        <li><strong>We do not sell your personal data.</strong></li>
+        <li><strong>No advertising or analytics SDKs</strong> in the current release.</li>
+        <li><strong>Optional outbound sharing only with your action and, for third-party AI, your explicit prior consent.</strong></li>
     </ul>
 
-    <h2>3. Data stored on your device</h2>
-    <p>Depending on how you use the App, the following may be stored locally on your device:</p>
-    <ul>
-        <li>Note text, titles, tags, spaces, and timestamps</li>
-        <li>Links (URLs) you save</li>
-        <li>Photos, videos, and voice recordings you attach</li>
-        <li>App preferences (for example appearance and language)</li>
-    </ul>
-    <p>This data remains under your control on the device unless you:</p>
-    <ul>
-        <li>export or share it yourself;</li>
-        <li>back up the device with your own tools (for example an encrypted device backup); or</li>
-        <li>send content through the system Share sheet to another app or service you choose.</li>
-    </ul>
+    <h2>3. What data is collected, how, and all purposes</h2>
+    <p>This section is intended to satisfy App Store requirements to state clearly: <strong>what</strong> data is involved, <strong>how</strong> it is collected, and <strong>all purposes</strong> for which it is used.</p>
 
-    <h2>4. Permissions</h2>
-    <p>The App may request the following iOS permissions only when you use related features:</p>
+    <h3>3.1 Data stored only on your device (default)</h3>
+    <table class="legalTable">
+        <thead>
+            <tr><th>Data</th><th>How collected</th><th>Purpose(s)</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Note title, body text, tags, spaces, timestamps</td>
+                <td>You type, paste, edit, or import via Share Extension</td>
+                <td>Capture, browse, search, edit, and organize notes on device</td>
+            </tr>
+            <tr>
+                <td>Links (URLs) you save</td>
+                <td>You paste or share a URL</td>
+                <td>Store and open source links</td>
+            </tr>
+            <tr>
+                <td>Photos, videos, voice recordings</td>
+                <td>You attach or record using device features</td>
+                <td>Attach media to notes on device</td>
+            </tr>
+            <tr>
+                <td>App preferences (appearance, language, feature switches)</td>
+                <td>You change settings</td>
+                <td>Remember your preferences on device</td>
+            </tr>
+            <tr>
+                <td>Your self-provided AI API key (if you choose Pro AI Organizer)</td>
+                <td>You paste and save it in Settings</td>
+                <td>Authenticate requests <strong>directly</strong> to the AI provider <strong>you</strong> select</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>Unless you opt into a feature below, this data stays on your device</strong> and is not transmitted to Ekildar Office servers.</p>
+
+    <h3>3.2 Data that may leave your device (only when you choose)</h3>
+    <table class="legalTable">
+        <thead>
+            <tr><th>Data</th><th>How / when</th><th>Sent to (recipient)</th><th>Purpose(s)</th><th>Your permission</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>AI Organizer payload:</strong> current note <strong>title</strong>, <strong>text</strong> (within length limits), and a <strong>privacy-filtered URL</strong> (query, fragment, and credentials removed) when a link exists</td>
+                <td>Only after you enable Pro AI Organizer, save your own API key, select a provider, and <strong>Allow</strong> on the dedicated consent sheet; then when you organize that note or run a connection test</td>
+                <td>The provider <strong>you selected</strong>: <strong>Groq</strong>, <strong>OpenRouter</strong>, or <strong>DeepSeek</strong> (request goes <strong>directly</strong> to that provider using your key; not via an Ekildar Office note-content server)</td>
+                <td>Generate or improve <strong>title / summary / tags</strong> for <strong>that note only</strong>; connection test verifies the key works</td>
+                <td><strong>Explicit prior consent</strong> via in-app Consent Sheet (“Allow sharing with [Provider]” / “Don’t Allow”). No organize or test request is sent until you Allow for that provider. You may revoke in Settings → AI data sharing</td>
+            </tr>
+            <tr>
+                <td><strong>iCloud backup archive</strong> (<code>.nexusbackup</code>), which may include note text, tags, spaces, and media you stored</td>
+                <td>Only when you tap <strong>Back up to iCloud</strong></td>
+                <td><strong>Your</strong> Apple iCloud Private Database (CloudKit), under <strong>your</strong> Apple ID</td>
+                <td>Manual snapshot backup / later restore</td>
+                <td>Your deliberate backup action. Ekildar Office does <strong>not</strong> receive this archive</td>
+            </tr>
+            <tr>
+                <td><strong>Live note sync fields:</strong> note text, tags, spaces, summaries (media <strong>not</strong> included in current live sync)</td>
+                <td>Only if you are Pro and turn on <strong>Sync notes with iCloud</strong> (off by default)</td>
+                <td><strong>Your</strong> Apple iCloud Private Database via SwiftData / CloudKit</td>
+                <td>Multi-device sync of note text metadata</td>
+                <td>Your deliberate sync switch. Turning off stops further sync</td>
+            </tr>
+            <tr>
+                <td><strong>Purchase / entitlement status</strong> (not note contents)</td>
+                <td>When you buy or restore optional Pro via In-App Purchase</td>
+                <td><strong>Apple</strong> (App Store / StoreKit) processes payment; <strong>RevenueCat</strong> may receive limited purchase/entitlement signals needed to unlock Pro on device</td>
+                <td>Process subscription, restore purchases, show paywall / entitlement state</td>
+                <td>You initiate purchase or restore in the App Store flow</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>What AI Organizer does NOT send:</strong> photos, audio, video, attachment files, clipboard contents (except what you already put in the note text), or your other notes.</p>
+
+    <h2>4. Permissions (device features)</h2>
+    <p>The App may request iOS permissions <strong>only when you use related features</strong>:</p>
     <table class="legalTable">
         <thead>
             <tr><th>Permission</th><th>Purpose</th></tr>
         </thead>
         <tbody>
-            <tr><td>Photo Library</td><td>Only when you choose to attach images to a note</td></tr>
-            <tr><td>Microphone</td><td>Only when you choose to record a voice note</td></tr>
+            <tr><td><strong>Photo Library</strong></td><td>Attach images to a note when you choose</td></tr>
+            <tr><td><strong>Camera</strong></td><td>Capture a photo for a note when you choose</td></tr>
+            <tr><td><strong>Microphone</strong></td><td>Record a voice note when you choose</td></tr>
         </tbody>
     </table>
-    <p>You can revoke permissions in iOS Settings. Doing so may disable the related features.</p>
+    <p>You can revoke permissions in iOS Settings. Doing so may disable related features. Permission prompts are for on-device capture; they are <strong>not</strong> consent to send note content to third-party AI.</p>
 
-    <h2>5. Share Extension</h2>
-    <p>When you save content from another app via the Share Extension, that content is written into the local App Group storage used by NexusNote on your device. We do not transmit that content to Ekildar Office servers.</p>
+    <h2>5. Share Extension and clipboard</h2>
+    <ul>
+        <li><strong>Share Extension:</strong> Content you save from another app is written into <strong>local App Group storage</strong> on your device. It is not uploaded to Ekildar Office servers.</li>
+        <li><strong>Clipboard:</strong> If you copy in the App, text may go to the system pasteboard for your own pasting elsewhere. We do not send clipboard contents to our servers.</li>
+    </ul>
 
-    <h2>6. Clipboard</h2>
-    <p>If you use copy actions in the App, text may be placed on the system pasteboard so you can paste it elsewhere. The App does not send clipboard contents to our servers.</p>
+    <h2>6. Third-party services and equivalent protection</h2>
+    <p>We may interact with the following third parties <strong>only for the purposes listed in §3</strong>. We do <strong>not</strong> share your note contents with advertisers or analytics vendors.</p>
+    <table class="legalTable">
+        <thead>
+            <tr><th>Third party</th><th>Role</th><th>What they may receive</th><th>Protection</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Apple</strong> (App Store, StoreKit, iCloud / CloudKit, system diagnostics)</td>
+                <td>Payments; optional backup/sync you enable; platform services</td>
+                <td>Purchase data per Apple; backup/sync content only in <strong>your</strong> iCloud when you enable those features</td>
+                <td>Governed by Apple’s Privacy Policy and iCloud terms. Apple provides industry-standard protections for App Store and iCloud customers</td>
+            </tr>
+            <tr>
+                <td><strong>RevenueCat</strong></td>
+                <td>Subscription entitlement / paywall UI</td>
+                <td>Limited purchase and entitlement information needed to unlock Pro—<strong>not</strong> your note titles, bodies, media, or API keys</td>
+                <td>Governed by RevenueCat’s Privacy Policy. Used only for monetization/entitlement, with contractual/API obligations to protect customer data for that purpose</td>
+            </tr>
+            <tr>
+                <td><strong>Groq / OpenRouter / DeepSeek</strong> (user-chosen)</td>
+                <td>Optional AI Organizer inference</td>
+                <td>Only the Organizer payload in §3.2, and <strong>only after</strong> your explicit Allow for that named provider</td>
+                <td>Each provider publishes a privacy policy / terms for API use. <strong>Before any share</strong>, the App names the provider, lists what is and is not sent, states the purpose, links to this Privacy Policy, and requires Allow / Don’t Allow. By tapping Allow, you instruct us to send that payload to <strong>that</strong> provider. Their handling (including retention or training) is governed by <strong>their</strong> policy—please review it. We select providers that offer published privacy commitments for API customers; we do not operate their systems</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>Confirmation (App Store Guideline 5.1.1):</strong> Any third party with whom the App shares user data as described above does so under published privacy terms and protections appropriate to the stated purpose, intended to provide the <strong>same or equivalent level of protection</strong> for that data relative to the disclosures in this Policy. We do <strong>not</strong> sell or rent your note content. We do <strong>not</strong> share note content with third parties for advertising or cross-app tracking.</p>
+    <p>If a provider’s practices are unacceptable to you, choose <strong>Don’t Allow</strong>, revoke sharing in Settings, or do not use AI Organizer.</p>
 
-    <h2>7. Purchases (if offered)</h2>
-    <p>If the App offers optional paid features (for example subscriptions), payment is processed by Apple. We do not receive your full payment card details. Apple may provide us with limited purchase status information needed to unlock features on your device, subject to Apple’s rules.</p>
+    <h2>7. AI Organizer consent flow (detail)</h2>
+    <p>AI Organizer is optional and Pro-gated. NexusNote does <strong>not</strong> sell AI quota and does <strong>not</strong> operate its own AI server that receives Organizer note content.</p>
+    <p>Before any note content or connection probe is sent to a third-party AI provider, the App presents a dedicated Consent Sheet that:</p>
+    <ol>
+        <li><strong>Names the recipient</strong> (Groq, OpenRouter, or DeepSeek—whichever you selected);</li>
+        <li>Lists <strong>what is sent</strong> (title, text, privacy-filtered URL if any);</li>
+        <li>Lists <strong>what is not sent</strong> (photos, audio, video, attachments, other notes);</li>
+        <li>States the <strong>purpose</strong> (title / summary / tags for the current note only);</li>
+        <li>Offers <strong>Allow sharing with [Provider]</strong> and <strong>Don’t Allow</strong>;</li>
+        <li>Links to this Privacy Policy.</li>
+    </ol>
+    <p>Changing provider requires a new Allow. Revoking consent stops further outbound Organizer requests.</p>
 
     <h2>8. Children</h2>
-    <p>The App is not directed at children under 13. Do not use the App to store data if you are not permitted to do so under applicable law.</p>
+    <p>The App is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have received such information on our systems, contact us and we will delete it where applicable. (Note contents are not stored on Ekildar Office servers in normal use.)</p>
 
-    <h2>9. International users</h2>
-    <p>Because notes stay on your device in the current release, Ekildar Office does not transfer your note contents to our servers as part of normal App use. If you later enable a future sync or cloud feature (if offered), we will update this policy before that feature processes personal data off-device.</p>
+    <h2>9. Security</h2>
+    <p>We take commercially reasonable steps to protect information under our control. No method of electronic storage or internet transmission is 100% secure. For optional iCloud features, Apple’s security model applies. For AI Organizer, transmission uses HTTPS to the provider you chose; your API key remains under your control on device (and with that provider per their terms).</p>
 
-    <h2>10. Changes</h2>
-    <p>We may update this policy when features change. Material changes will be reflected by updating the effective date on this page. Continued use of the App after an update means you acknowledge the revised policy.</p>
+    <h2>10. Links to other sites</h2>
+    <p>The App or this Policy may link to third-party sites (for example provider privacy pages). We do not control those sites and are not responsible for their content or practices. Review their policies separately.</p>
 
-    <h2>11. Contact</h2>
-    <p>Publisher: Ekildar Office<br>
-    Email: <a href="mailto:643573697@qq.com">643573697@qq.com</a></p>
+    <h2>11. International users</h2>
+    <p>Notes remain on your device by default. Optional iCloud backup/sync may involve Apple storing or transferring data per Apple’s iCloud policies and your Apple ID region. Optional AI Organizer (after consent) sends the Organizer payload to your chosen provider, which may process data in regions where that provider operates. Ekildar Office does not transfer your note contents to Ekildar Office servers as part of normal App use.</p>
+
+    <h2>12. Changes</h2>
+    <p>We may update this Policy when features change. Material changes take effect when posted here with an updated effective date. We may also notify you in the App when appropriate. Continued use after an update means you acknowledge the revised Policy.</p>
+
+    <h2>13. Contact</h2>
+    <p><strong>Publisher:</strong> Ekildar Office<br>
+    <strong>Email:</strong> <a href="mailto:643573697@qq.com">643573697@qq.com</a></p>
+    <p>Questions about this Privacy Policy are welcome at the address above.</p>
+    <p>Using NexusNote means you acknowledge this Privacy Policy.</p>
 </div>
 
 <div class="legalPanel" data-lang="zh" hidden>
@@ -83,27 +194,94 @@
     <h1>隐私政策 — 知仓</h1>
 
     <h2>1. 我们是谁</h2>
-    <p>知仓（NexusNote，以下简称「本应用」）由 Ekildar Office 发布。本隐私政策说明您使用本应用时涉及哪些数据，以及这些数据如何被处理。</p>
+    <p>Ekildar Office（「我们」「我司」「本公司」）运营知仓（NexusNote）应用程序（「本应用」或「服务」）。我们致力于保护用户（「您」）的隐私。本隐私政策说明：<strong>收集了什么数据</strong>、<strong>如何收集</strong>、<strong>全部用途</strong>、<strong>可能与谁共享</strong>，以及<strong>在共享前如何取得您的许可</strong>。</p>
+    <p>通过使用本应用，即表示您知悉本隐私政策。本政策应与《使用条款》一并阅读。</p>
 
-    <h2>2. 概要</h2>
+    <h2>2. 核心原则</h2>
     <ul>
-        <li>使用本应用无需注册账号。</li>
-        <li>您的笔记、附件、标签及相关元数据保存在您的设备本地（含同一设备上分享扩展使用的 App Group 容器）。</li>
-        <li>当前版本没有接收您笔记内容的知仓云端服务器。</li>
-        <li>我们不会出售您的个人数据。</li>
-        <li>当前版本未集成第三方广告或统计分析 SDK。</li>
-        <li>当您通过 App Store / Apple 系统下载、购买或产生崩溃诊断时，Apple 可能按其自身政策处理相关数据；该部分由 Apple 控制，不属于知仓对本机笔记的存储。</li>
+        <li><strong>无需账号。</strong> 使用本应用无需向我们注册账号。</li>
+        <li><strong>本地优先。</strong> 笔记、附件、标签及相关元数据默认保存在<strong>您的设备本地</strong>（含同一设备上分享扩展使用的 App Group 容器）。</li>
+        <li><strong>我们不运营接收笔记正文的知仓后端。</strong> 正常使用中，Ekildar Office 没有用于存储您笔记内容的云端服务器。</li>
+        <li><strong>我们不会出售您的个人数据。</strong></li>
+        <li><strong>当前版本未集成</strong>第三方广告或统计分析 SDK。</li>
+        <li><strong>仅在您主动选择时，数据才可能离开本机</strong>；向第三方 AI 共享前，必须经过您的<strong>明确事先同意</strong>。</li>
     </ul>
 
-    <h2>3. 设备本地数据</h2>
-    <p>根据使用方式，本应用可能在设备本地保存：</p>
-    <ul>
-        <li>笔记正文、标题、标签、主题空间与时间戳</li>
-        <li>您保存的链接（URL）</li>
-        <li>您添加的图片、视频与语音</li>
-        <li>应用偏好（如外观、语言等）</li>
-    </ul>
-    <p>除非您自行导出/分享、使用您自己的设备备份工具，或通过系统分享面板发送到其他应用/服务，否则上述数据由您在本机控制。</p>
+    <h2>3. 收集了什么、如何收集、全部用途</h2>
+    <p>本节用于明确说明（以符合 App Store 对隐私政策的要求）：本应用涉及<strong>哪些数据</strong>、<strong>如何收集</strong>，以及这些数据的<strong>全部用途</strong>。</p>
+
+    <h3>3.1 默认仅保存在本机的数据</h3>
+    <table class="legalTable">
+        <thead>
+            <tr><th>数据</th><th>如何收集</th><th>用途</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>笔记标题、正文、标签、空间、时间戳</td>
+                <td>您输入、粘贴、编辑，或通过分享扩展导入</td>
+                <td>在本机捕获、浏览、搜索、编辑与整理笔记</td>
+            </tr>
+            <tr>
+                <td>您保存的链接（URL）</td>
+                <td>您粘贴或分享链接</td>
+                <td>保存并打开来源链接</td>
+            </tr>
+            <tr>
+                <td>图片、视频、语音</td>
+                <td>您主动添加或录制</td>
+                <td>在本机为笔记附加媒体</td>
+            </tr>
+            <tr>
+                <td>应用偏好（外观、语言、功能开关等）</td>
+                <td>您在设置中修改</td>
+                <td>在本机记住您的偏好</td>
+            </tr>
+            <tr>
+                <td>您自备的 AI API Key（若使用 Pro AI Organizer）</td>
+                <td>您在设置中粘贴并保存</td>
+                <td>使用您的密钥，将请求<strong>直接</strong>发往<strong>您选择</strong>的 AI 服务商</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>除非您主动启用下文可选功能，上述数据留在本机</strong>，不会传输到 Ekildar Office 服务器。</p>
+
+    <h3>3.2 仅在您选择时才可能离开本机的数据</h3>
+    <table class="legalTable">
+        <thead>
+            <tr><th>数据</th><th>如何 / 何时</th><th>发送给谁（接收方）</th><th>用途</th><th>您的许可</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>AI Organizer 载荷：</strong>当前笔记的<strong>标题</strong>、<strong>正文</strong>（在长度限制内），以及（如有链接）<strong>脱敏后的 URL</strong>（已去除 query、fragment 与凭据）</td>
+                <td>仅在您启用 Pro AI Organizer、保存自备 API Key、选择服务商，并在专用同意页点击<strong>允许</strong>之后；随后在整理该笔记或进行连接测试时</td>
+                <td><strong>您选择的</strong>服务商：<strong>Groq</strong>、<strong>OpenRouter</strong> 或 <strong>DeepSeek</strong>（用您的 Key <strong>直达</strong>该服务商；<strong>不经</strong> Ekildar Office 的笔记内容服务器）</td>
+                <td>仅为<strong>该条笔记</strong>生成或改进<strong>标题 / 摘要 / 标签</strong>；连接测试用于验证 Key 可用</td>
+                <td><strong>事先明确同意</strong>：应用内同意页提供「允许与 [服务商] 共享」与「不允许」。在您对该服务商点击允许之前，<strong>不会</strong>发送整理或探测请求。可在「设置 → AI 数据共享」撤回</td>
+            </tr>
+            <tr>
+                <td><strong>iCloud 备份包</strong>（<code>.nexusbackup</code>），可能含笔记正文、标签、空间与您添加的媒体</td>
+                <td>仅当您点击<strong>备份到 iCloud</strong></td>
+                <td><strong>您的</strong> Apple iCloud 私人数据库（CloudKit），归属<strong>您的</strong> Apple ID</td>
+                <td>手动快照备份 / 日后恢复</td>
+                <td>您主动触发备份。Ekildar Office <strong>不接收</strong>该备份包</td>
+            </tr>
+            <tr>
+                <td><strong>活库同步字段：</strong>笔记正文、标签、空间、摘要（当前版本活库<strong>不同步</strong>媒体）</td>
+                <td>仅当您为 Pro 用户并打开「同步笔记到 iCloud」（默认关闭）</td>
+                <td><strong>您的</strong> Apple iCloud 私人数据库（SwiftData / CloudKit）</td>
+                <td>多设备同步笔记文本类数据</td>
+                <td>您主动打开同步开关；关闭后停止继续同步</td>
+            </tr>
+            <tr>
+                <td><strong>购买 / 权益状态</strong>（不含笔记内容）</td>
+                <td>您通过 App 内购买或恢复可选 Pro 时</td>
+                <td><strong>Apple</strong>（App Store / StoreKit）处理付款；<strong>RevenueCat</strong> 可能接收用于在本机解锁 Pro 所需的有限购买/权益信息</td>
+                <td>处理订阅、恢复购买、展示付费墙与权益状态</td>
+                <td>您在 App Store 流程中主动购买或恢复</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>AI Organizer 不会发送：</strong>图片、语音、视频、附件文件、剪贴板内容（除非您已写入笔记正文），以及其他笔记。</p>
 
     <h2>4. 系统权限</h2>
     <p>仅在您使用相关功能时，本应用可能请求：</p>
@@ -112,31 +290,80 @@
             <tr><th>权限</th><th>用途</th></tr>
         </thead>
         <tbody>
-            <tr><td>相册</td><td>仅在您主动为笔记添加图片时使用</td></tr>
-            <tr><td>麦克风</td><td>仅在您主动录制语音时使用</td></tr>
+            <tr><td><strong>相册</strong></td><td>仅在您主动为笔记添加图片时</td></tr>
+            <tr><td><strong>相机</strong></td><td>仅在您主动拍摄并写入笔记时</td></tr>
+            <tr><td><strong>麦克风</strong></td><td>仅在您主动录制语音时</td></tr>
         </tbody>
     </table>
-    <p>您可在 iOS「设置」中随时关闭权限；关闭后相关功能可能不可用。</p>
+    <p>您可在 iOS「设置」中随时关闭权限；关闭后相关功能可能不可用。系统权限弹窗用于本机采集能力，<strong>不等于</strong>同意将笔记内容发送给第三方 AI。</p>
 
-    <h2>5. 分享扩展</h2>
-    <p>通过系统分享从其他 App 存入的内容，会写入本机 App Group，不会上传到 Ekildar Office 服务器。</p>
+    <h2>5. 分享扩展与剪贴板</h2>
+    <ul>
+        <li><strong>分享扩展：</strong>从其他 App 存入的内容写入本机 App Group，<strong>不会</strong>上传到 Ekildar Office 服务器。</li>
+        <li><strong>剪贴板：</strong>若您在应用内复制，文本可能进入系统剪贴板以便您自行粘贴。本应用不会把剪贴板内容发送到我们的服务器。</li>
+    </ul>
 
-    <h2>6. 剪贴板</h2>
-    <p>若您在应用内使用复制，文本可能进入系统剪贴板以便粘贴到别处。本应用不会把剪贴板内容发送到我们的服务器。</p>
+    <h2>6. 第三方服务与同等保护</h2>
+    <p>我们仅可为第 3 节所列用途与下列第三方交互。我们<strong>不会</strong>将您的笔记内容提供给广告或分析供应商。</p>
+    <table class="legalTable">
+        <thead>
+            <tr><th>第三方</th><th>角色</th><th>可能接收的内容</th><th>保护说明</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Apple</strong>（App Store、StoreKit、iCloud / CloudKit、系统诊断等）</td>
+                <td>付款；您启用的可选备份/同步；平台服务</td>
+                <td>按 Apple 规则处理的购买数据；仅在您启用相关功能时，备份/同步内容进入<strong>您的</strong> iCloud</td>
+                <td>受 Apple 隐私政策与 iCloud 条款约束；Apple 为 App Store / iCloud 用户提供业界通行的保护措施</td>
+            </tr>
+            <tr>
+                <td><strong>RevenueCat</strong></td>
+                <td>订阅权益 / 付费墙界面</td>
+                <td>解锁 Pro 所需的有限购买与权益信息——<strong>不含</strong>笔记标题、正文、媒体或您的 API Key</td>
+                <td>受 RevenueCat 隐私政策约束；仅用于商业化/权益，并对其客户数据承担与该用途相应的合同与 API 保护义务</td>
+            </tr>
+            <tr>
+                <td><strong>Groq / OpenRouter / DeepSeek</strong>（由您选择）</td>
+                <td>可选 AI Organizer 推理</td>
+                <td>仅第 3.2 节所述 Organizer 载荷，且<strong>仅在</strong>您对该具名服务商点击允许之后</td>
+                <td>各服务商就其 API 使用公布隐私政策/条款。<strong>共享前</strong>，应用会写明接收方名称、发送与不发送的内容、用途，并提供本隐私政策链接，以及「允许 / 不允许」。点击允许即表示您指示我们将该载荷发送给<strong>该</strong>服务商。其处理方式（含保留或训练）受<strong>其自身</strong>政策约束，请您自行审阅。我们选用具备公开隐私承诺的 API 服务商；我们不运营其系统</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>确认（对应 App Store 指南 5.1.1）：</strong>本应用按上文与之共享用户数据的任何第三方，均在其公开隐私条款下，为所述用途提供与本政策披露相符的、<strong>相同或同等水平的保护</strong>。我们<strong>不出售、不出租</strong>您的笔记内容；也<strong>不会</strong>为广告或跨 App 追踪而与第三方共享笔记内容。</p>
+    <p>若您不接受某服务商的做法，请选择「不允许」、在设置中撤回共享，或不使用 AI Organizer。</p>
 
-    <h2>7. 付费功能（如有）</h2>
-    <p>若本应用提供可选付费功能（例如订阅），付款由 Apple 处理。我们不会获取您的完整银行卡信息。Apple 可能在其规则允许范围内，向我们提供用于在本机解锁功能所需的有限购买状态信息。</p>
+    <h2>7. AI Organizer 同意流程（详述）</h2>
+    <p>AI Organizer 为可选 Pro 功能。知仓<strong>不出售</strong> AI 额度，也<strong>不运营</strong>接收 Organizer 笔记内容的自有 AI 服务器。</p>
+    <p>在向任何第三方 AI 服务商发送笔记内容或连接探测之前，本应用会展示专用同意页，其中：</p>
+    <ol>
+        <li><strong>写明接收方名称</strong>（您所选的 Groq、OpenRouter 或 DeepSeek）；</li>
+        <li>列出<strong>将发送的内容</strong>（标题、正文、脱敏 URL（如有））；</li>
+        <li>列出<strong>不会发送的内容</strong>（图片、语音、视频、附件、其他笔记）；</li>
+        <li>说明<strong>用途</strong>（仅为当前笔记生成标题 / 摘要 / 标签）；</li>
+        <li>提供「允许与 [服务商] 共享」与「不允许」；</li>
+        <li>提供本隐私政策链接。</li>
+    </ol>
+    <p>更换服务商需重新允许。撤回同意后，将停止后续 Organizer 外发请求。</p>
 
-    <h2>8. 儿童</h2>
-    <p>本应用不以 13 岁以下儿童为主要服务对象。若适用法律不允许您存储相关数据，请勿使用本应用进行存储。</p>
+    <h2>8. 儿童隐私</h2>
+    <p>本应用不以 13 岁以下儿童为主要服务对象，也不会故意收集 13 岁以下儿童的个人识别信息。若您认为我们在自有系统中收到了此类信息，请联系我们，我们将在适用范围内删除。（正常使用中，笔记内容不会存储在 Ekildar Office 服务器上。）</p>
 
-    <h2>9. 跨境说明</h2>
-    <p>当前版本笔记保存在您的设备本地，正常使用时 Ekildar Office 不会把您的笔记内容传输到我们的服务器。若未来提供同步或云端能力，我们将在该功能处理离机个人数据前更新本政策。</p>
+    <h2>9. 安全性</h2>
+    <p>我们努力以商业上合理的方式保护由我们控制的信息。任何电子存储或互联网传输方法都无法保证绝对安全。可选 iCloud 功能适用 Apple 的安全机制。AI Organizer 通过 HTTPS 发往您选择的服务商；您的 API Key 由您在本机控制（并按其条款由该服务商处理）。</p>
 
-    <h2>10. 政策变更</h2>
-    <p>功能变化时我们可能更新本政策，并以更新日期为准。更新后继续使用本应用，即表示您知悉修订后的政策。</p>
+    <h2>10. 指向其他网站的链接</h2>
+    <p>本应用或本政策可能包含指向第三方网站的链接（例如服务商隐私页）。我们无法控制其内容或做法，也不承担责任。请另行查阅其政策。</p>
 
-    <h2>11. 联系我们</h2>
-    <p>发布者：Ekildar Office<br>
-    邮箱：<a href="mailto:643573697@qq.com">643573697@qq.com</a></p>
+    <h2>11. 跨境说明</h2>
+    <p>默认情况下笔记保存在您的设备本地。可选的 iCloud 备份/同步可能由 Apple 按其 iCloud 政策与您的 Apple ID 地区存储或传输。可选的 AI Organizer（经同意后）会将 Organizer 载荷发往您选择的服务商，该服务商可能在其运营地区处理数据。正常使用中，Ekildar Office <strong>不会</strong>把您的笔记内容传输到 Ekildar Office 的服务器。</p>
+
+    <h2>12. 政策变更</h2>
+    <p>功能变化时我们可能更新本政策。重大变更以本页更新日期为准生效；必要时也可能在应用内通知。更新后继续使用本应用，即表示您知悉修订后的政策。</p>
+
+    <h2>13. 联系我们</h2>
+    <p><strong>发布者：</strong>Ekildar Office<br>
+    <strong>邮箱：</strong><a href="mailto:643573697@qq.com">643573697@qq.com</a></p>
+    <p>如对本隐私政策有任何疑问，请通过上述邮箱联系我们。</p>
+    <p>使用知仓（NexusNote），即表示您知悉本隐私政策。</p>
 </div>
